@@ -56,7 +56,7 @@ body {
   /*min-height: 85vh;*/
 }
 
-#formula {
+#main_formula {
   margin-right: auto;
   margin-left: auto;
 
@@ -76,7 +76,7 @@ body {
   height: 2.5rem;
 }
 
-#formula th {
+#main_formula th {
   overflow: hidden;
   position:relative; 
 }
@@ -88,12 +88,15 @@ body {
   transform: translate(-50%, -50%);
 }
 
+*:focus {
+  outline: none;
+}
+
 .knob {
   color: white;
   border-radius: 0.3rem;
   cursor: pointer;
   text-align: center;
-  outline: none !important; /*per evitare il contorno giallo su chrome*/
 }
 
 .knob:not(.drawed) {
@@ -156,9 +159,8 @@ a {
   color: #457b9d;
 }
 
-.toowide {
-  overflow-x: hidden;
-  max-width: 100%;
+.formula {
+  overflow-x: auto;
 }
 
 </style>
@@ -174,7 +176,7 @@ a {
 Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>, com'erano chiamate dal gruppo Bourbaki) di \(\mathbb R\) è una famiglia di sottoinsiemi di \(\mathbb R\) chiusa per complementi e unione numerabile, i cui elementi sono detti <span class='c'>misurabili</span>. Ne mettiamo tre a confronto, l'una inclusa propriamente nell'altra.
 </div>
 
-<table id='formula'>
+<table id='main_formula'>
   <tr>
     <th class="knob" id='knob0' onclick='clicked_term(0)'>
       <span class='term'> $$ \mathscr B (\mathbb R) $$ </span></th>
@@ -218,11 +220,11 @@ Più interessante è mostrare come mai si ha l'inclusione stretta. Potrebbe non 
 <p>Partiamo da un intervallo aperto, \( \ I = (a,b)\): è ragionevole assegnargli come lunghezza \(l(I)\) il valore \(b - a\). Se l'intervallo è limitato diciamo che \(l(I) = +\infty\).</p>
 <p>Come facciamo ad assegnare una "lunghezza" (o meglio, una misura) ad un sottoinsieme qualunque \(A \subseteq \mathbb R\)? Possiamo provare a decomporre \(A\) come unione disgiunta di intervalli aperti, e poi sommare le loro lunghezze; ma non è sempre possibile fare una simile decomposizione.</p>
 <p>Ciò che invece possiamo fare è considerare <b>tutti</b> i modi in cui <span class="green">un'unione numerabile di intervalli aperti possono "coprire" \(A\)</span>, e per ognuno di questi modi vedere qual è <span class="red">la somma delle lunghezze degli intervalli</span>. <span class="yellow">L'estremo inferiore</span> di tutte queste possibilità è proprio la <span class="blue">misura esterna di Lebesgue</span>:
-  <span class="toowide">$$\color{#1982c4}{m_1^*(A)} = 
-    \color{#e4a700}{\inf} \left\{
-    \color{#ff595e}{\sum_{n \in \mathbb N} l(I_n)} : 
-    \color{#6db100}{A \subseteq \bigcup_{n \in \mathbb N} I_n},
-    \quad I_n \text { intervalli aperti }\right\}.$$</span></p>
+  <div class="formula">$$\color{#1982c4} m_1^*(A) \color{black} = 
+    \color{#e4a700} \inf \color{black} \left\{
+    \color{#ff595e} \sum_{n \in \mathbb N} l(I_n) \color{black} : 
+    \color{#6db100} A \subseteq \bigcup_{n \in \mathbb N} I_n \color{black},
+    \quad I_n \text { intervalli aperti }\right\}.$$</div></p>
 
 <p>L'unico problema è che la misura esterna... non è una misura: non rispetta la \(\sigma\)-additività. Allora introduciamo finalmente la \(\sigma\)-algebra di Lebesgue, una famiglia di sottoinsiemi di \(\mathbb R\) scelta apposta in modo che, ristretta a tali insiemi, la misura esterna di Lebesgue sia \(\sigma\)-additiva. Il criterio che un sottoinsieme \(A \subseteq \mathbb R\) deve soddisfare per essere misurabile secondo Lebesgue
   ovvero \( ( \)ovvero che \(A \in \mathcal L (\mathbb R) ) \) è il seguente:
