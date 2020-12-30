@@ -46,7 +46,7 @@ body {
 #intro {
   text-align: center;
 
-  max-width: min(30rem, 95%);
+  max-width: min(30rem, 90%);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 25px;
@@ -107,15 +107,18 @@ body {
 }
 
 #container {
-  max-width: min(30rem, 95%);
+  max-width: min(30rem, 90%);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
 }
 
 .drawer {
-  margin-left: 1rem;
   overflow-y: hidden;
+}
+
+.drawer:not(.text) {
+  margin-left: 1rem;
 }
 
 .drawer:not(.drawed) {
@@ -140,16 +143,12 @@ body {
 .purple {color: #6a4c93;}
 
 html, body {
-  height: calc(100% - 1.2em);
+  height: calc(100vh - 3em);
   margin-bottom: 0px;
 }
 
 #content {
-  min-height: calc(100% - 1.2em);
-}
-
-h3 {
-  text-align: center;
+  min-height: calc(100vh - 3em);
 }
 
 #outro {
@@ -158,6 +157,8 @@ h3 {
 
   max-width: min(30rem, 95%);
   max-height: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
 }
@@ -168,6 +169,10 @@ a {
 
 .formula {
   overflow-x: auto;
+}
+
+h3 {
+  text-align: center;
 }
 
 </style>
@@ -210,10 +215,10 @@ Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>,
   <li>L'unione arbitraria di elementi di \(\mathscr B (\mathbb R)\) appartiene ancora a \(\mathscr B (\mathbb R)\).</li>
   <li>Ogni elemento di \(\mathscr B (\mathbb R)\) si può ottenere come combinazione dei punti precedenti.</li>
 </ul></p>
-<p>Possiamo infine dotare lo spazio misurabile \(\left(\mathbb R, \mathscr B (\mathbb R)\right)\) di una misura, definendola nel modo ovvio sugli intervalli e poi estendendola a tutti gli altri elementi (ogni insieme Borel-misurabile può essere "approssimato" bene a piacimento da un'unione numerabile disgiunta di intervalli aperti), ottenendo così lo spazio di misura dei boreliani.</p>
+<p>Possiamo infine dotare lo spazio misurabile \(\left(\mathbb R, \mathscr B (\mathbb R)\right)\) di una misura, definendola nel modo ovvio sugli intervalli e poi estendendola a tutti gli altri elementi (ogni insieme Borel-misurabile può essere "approssimato" bene a piacimento da un'unione numerabile disgiunta di intervalli aperti) ottenendo così lo spazio di misura dei boreliani.</p>
 </div>
 
-<div class="drawer" id="drawer1">
+<div class="text drawer" id="drawer1">
 <h3><span class='c'>Una questione di cardinalità</span></h3>
 
 <p>È facile constatare che ogni insieme misurabile secondo Borel lo è anche secondo Lebesgue (la misura di Lebesgue è il completamento di quella di Borel).
