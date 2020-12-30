@@ -93,7 +93,7 @@ body {
   border-radius: 0.3rem;
   cursor: pointer;
   text-align: center;
-  outline: none; /*per evitare il contorno giallo su chrome*/
+  outline: none !important; /*per evitare il contorno giallo su chrome*/
 }
 
 .knob:not(.drawed) {
@@ -143,11 +143,11 @@ body {
 .purple {color: #6a4c93;}
 
 #outro {
-  font-size: 1.4vmax ;
+  font-size: 0.8em;
   text-align: center;
 
-  max-width: 60vmax ;
-  max-height: 3vmax ;
+  max-width: min(30rem, 95%);
+  max-height: 1em;
   margin-left: auto;
   margin-right: auto;
 }
@@ -157,7 +157,7 @@ a {
 }
 
 .toowide {
-  overflow-x: scroll;
+  overflow-x: hidden;
   max-width: 100%;
 }
 
