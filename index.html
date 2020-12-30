@@ -148,6 +148,10 @@ html, body {
   min-height: calc(100% - 1.2em);
 }
 
+h3 {
+  text-align: center;
+}
+
 #outro {
   font-size: 0.8em;
   text-align: center;
@@ -208,13 +212,25 @@ Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>,
 </ul></p>
 <p>Possiamo infine dotare lo spazio misurabile \(\left(\mathbb R, \mathscr B (\mathbb R)\right)\) di una misura, definendola nel modo ovvio sugli intervalli e poi estendendola a tutti gli altri elementi (ogni insieme Borel-misurabile può essere "approssimato" bene a piacimento da un'unione numerabile disgiunta di intervalli aperti), ottenendo così lo spazio di misura dei boreliani.</p>
 </div>
-<div class='text drawer' id='drawer1'>
 
-<h3><span class='c'>Una questione di cardinalit&agrave</span></h3>
+<div class="drawer" id="drawer1">
+<h3><span class='c'>Una questione di cardinalità</span></h3>
 
-È facile constatare che ogni insieme misurabile secondo Borel lo è anche secondo Lebesgue (la misura di Lebesgue è il completamento di quella di Borel).
-Più interessante è mostrare come mai si ha l'inclusione stretta. Potrebbe non venire immediatamente in mente un esempio di insieme misurabile secondo Lebesgue e non secondo Borel, ma la verità è che - in termini di cardinalità - gli insiemi misurabili sono come un granello di sabbia in mezzo ad un mare di boreliani
+<p>È facile constatare che ogni insieme misurabile secondo Borel lo è anche secondo Lebesgue (la misura di Lebesgue è il completamento di quella di Borel).
+Più interessante è mostrare come mai si ha l'inclusione stretta. Potrebbe non venire immediatamente in mente un esempio di insieme misurabile secondo Lebesgue e non secondo Borel, ma la verità è che - in termini di cardinalità - i boreliani sono come un granello di sabbia in mezzo ad un mare di Lebesgue-misurabili.</p>
+<p>In termini meno allegorici,
+<div class="knob" id='knob10' onclick='clicked(10)'>
+\(\mathscr B (\mathbb R)\) ha la cardinalità di \(\mathbb R\)
+</div>
+<div class="drawer" id="drawer10">a</div>
 
+<div class="knob" id='knob11' onclick='clicked(11)'>
+\(\mathcal L (\mathbb R)\) ha la cardinalità di \(\mathcal P(\mathbb R\))
+</div>
+<div class="drawer" id="drawer11">b</div>
+
+<br>
+ma allora per <a href="https://it.wikipedia.org/wiki/Argomento_diagonale_di_Cantor#Il_teorema_sulla_cardinalit%C3%A0" target="_blank">l'argomento diagonale di Cantor</a>, non esiste una corrispondenza biunivoca tra \(\mathscr B (\mathbb R)\) e \(\mathcal L (\mathbb R)\), e certamente non possono essere uguali.</p>
 
 </div>
 <div class='text drawer' id='drawer2'>
@@ -339,7 +355,7 @@ tale che \(f(X_i)\in X_i\) per ogni \(i \in I\);</i></p>
 
 <p>Ma allora anzichè l'insieme di Vitali, non potremmo trovare un altro esempio che non preveda l'assioma?
 In realtà no: è stato dimostrare che ogni sottoinsieme non misurabile secondo Lebesgue si può costruire solo facendo uso dell'assioma della scelta.<br>
-In effetti nel 1970 <a href="https://www.researchgate.net/publication/239065757_A_Model_of_Set_Theory_in_Which_Every_Set_of_Reals_is_Lebesgue_Measurable"> in un paper </a> Robert Solovay costruì un modello della teoria degli insiemi di Zermelo-Fraenkel senza assumere l'assioma della scelta dove tutti gli insiemi di numeri reali sono misurabili secondo Lebesgue.</p>
+In effetti nel 1970 <a href="https://www.researchgate.net/publication/239065757_A_Model_of_Set_Theory_in_Which_Every_Set_of_Reals_is_Lebesgue_Measurable" target="_blank"> in un paper </a> Robert Solovay costruì un modello della teoria degli insiemi di Zermelo-Fraenkel senza assumere l'assioma della scelta dove tutti gli insiemi di numeri reali sono misurabili secondo Lebesgue.</p>
 </div>
 </div>
 <div class='text drawer' id='drawer4'>
