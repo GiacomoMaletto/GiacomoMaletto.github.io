@@ -10,63 +10,19 @@
 
 <style>
 
-h1 {
-    font-size: 2.5rem;
-}
+h1 {font-size: 2.5rem;}
+h2 {font-size: 2.25rem;}
+h3 {font-size: 2rem;}
+h4 {font-size: 1.75rem;}
+h5 {font-size: 1.5rem;}
+h6 {font-size: 1.25rem;}
+p {font-size: 1rem;}
 
-h2 {
-    font-size: 2.25rem;
-}
-
-h3 {
-    font-size: 2rem;
-}
-
-h4 {
-    font-size: 1.75rem;
-}
-
-h5 {
-    font-size: 1.5rem;
-}
-
-h6 {
-    font-size: 1.25rem;
-}
-
-p {
-    font-size: 1rem;
-}
-
-@media (max-width: 480px) {
-    html {
-        font-size: 18px;
-    }
-}
-
-@media (min-width: 480px) {
-    html {
-        font-size: 19px;
-    }
-}
-
-@media (min-width: 768px) {
-    html {
-        font-size: 20px;
-    }
-}
-
-@media (min-width: 992px) {
-    html {
-        font-size: 21px;
-    }
-}
-
-@media (min-width: 1200px) {
-    html {
-        font-size: 22px;
-    }
-}
+@media (max-width: 480px) {html {font-size: 16px;}}
+@media (min-width: 480px) {html {font-size: 18px;}}
+@media (min-width: 768px) {html {font-size: 20.5px;}}
+@media (min-width: 992px) {html {font-size: 23px;}}
+@media (min-width: 1200px) {html {font-size: 26px;}}
 
 body {
   background-color: white;
@@ -75,26 +31,7 @@ body {
   opacity: 0; /*all'avvio*/
 }
 
-#intro {
-  /*font-size: 20px;*/
-  text-align: center;
-
-  position: relative;
-  max-width: 30rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 5vmax ;
-}
-
-#formula {
-  margin-right: auto;
-  margin-left: auto;
-
-  table-layout: fixed;
-  border-spacing: 0.5vmax ;
-}
-
-.fadeIn { /*si aggiunge quando mathJax è carico*/
+.fadeIn {
   animation-name: fadeIn;
   animation-duration: 2s;
   animation-fill-mode: forwards;
@@ -106,19 +43,38 @@ body {
   100% {opacity: 1;}
 }
 
+#intro {
+  text-align: center;
+
+  max-width: min(30rem, 95%);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
+}
+
+#formula {
+  margin-right: auto;
+  margin-left: auto;
+
+  table-layout: fixed;
+  border-spacing: 0.2rem;
+
+  font-size: 2rem;
+}
+
 #formula th {
   overflow: hidden;
   position:relative; 
 }
 
 #knob0, #knob2, #knob4 {
-  width: 12vmax ;
-  height: 5.5vmax ;
+  width: 5rem;
+  height: 2.5rem;
 }
 
 #knob1, #knob3 {
-  width: 5vmax ;
-  height: 5.5vmax ;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .term {
@@ -126,14 +82,11 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  font-size: 4vmax ;
-  text-align: center;
 }
 
 .knob {
   color: white;
-  border-radius: 0.4vmax;
+  border-radius: 0.3rem;
   cursor: pointer;
   text-align: center;
 }
@@ -151,17 +104,14 @@ body {
 }
 
 #container {
-  font-size: 2vmax ;
-
-  max-width: 60vmax ;
-  margin-bottom: 5vmax ;
+  max-width: min(30rem, 95%);
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5vmax ;
+  margin-bottom: 2rem;
 }
 
 .drawer {
-  margin-left: 2vmax;
+  margin-left: 1rem;
   overflow-y: hidden;
 }
 
