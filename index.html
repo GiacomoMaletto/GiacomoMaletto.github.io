@@ -1,0 +1,397 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+
+<style>
+
+body {
+  background-color: white;
+  font-family: 'Times New Roman', Times, serif;
+  overflow-y:scroll; /*per avere sempre la scrollbar*/
+  opacity: 0; /*all'avvio*/
+}
+
+#intro {
+  font-size: 2vw;
+  text-align: center;
+
+  position: relative;
+  max-width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5vmax ;
+}
+
+#formula {
+  margin-right: auto;
+  margin-left: auto;
+
+  table-layout: fixed;
+  border-spacing: 0.5vmax ;
+}
+
+.fadeIn { /*si aggiunge quando mathJax è carico*/
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  50% {opacity: 0.001;}
+  100% {opacity: 1;}
+}
+
+#formula th {
+  overflow: hidden;
+  position:relative; 
+}
+
+#knob0, #knob2, #knob4 {
+  width: 12vmax ;
+  height: 5.5vmax ;
+}
+
+#knob1, #knob3 {
+  width: 5vmax ;
+  height: 5.5vmax ;
+}
+
+.term {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 4vmax ;
+  text-align: center;
+}
+
+.knob {
+  color: white;
+  border-radius: 0.4vmax;
+  cursor: pointer;
+  text-align: center;
+}
+
+.knob:not(.drawed) {
+  background-color: #e63946;
+}
+
+.knob.drawed {
+  background-color: #457b9d;
+}
+
+.knob:hover {
+  background-color: #457b9d;
+}
+
+#container {
+  font-size: 2vmax ;
+
+  max-width: 60vmax ;
+  margin-bottom: 5vmax ;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5vmax ;
+}
+
+.drawer {
+  margin-left: 2vmax;
+  overflow-y: hidden;
+}
+
+.drawer:not(.drawed) {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height .25s .25s,
+    padding .25s .25s,
+    opacity .25s;
+}
+
+.drawer.drawed {
+  max-height: 9999px;
+  transition: max-height .25s,
+    padding .25s,
+    opacity .25s .25s;
+}
+
+.c {color: #457b9d;}
+.red {color: #ff595e;}
+.green {color: #6db100;}
+.blue {color: #1982c4;}
+.yellow {color: #e4a700;}
+.purple {color: #6a4c93;}
+
+#content {
+  min-height: 85vh;
+}
+
+#outro {
+  font-size: 1.4vmax ;
+  text-align: center;
+
+  max-width: 60vmax ;
+  max-height: 3vmax ;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #457b9d;
+}
+
+.toowide {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+</style>
+
+<title>Le tribù di R</title>
+
+</head>
+
+<body>
+<div id="content">
+<div id="intro">
+<h1><span class='c'>Le tribù di \(\mathbb R\)</span></h1>
+Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>, com'erano chiamate dal gruppo Bourbaki) di \(\mathbb R\) è una famiglia di sottoinsiemi di \(\mathbb R\) chiusa per complementi e unione numerabile, i cui elementi sono detti <span class='c'>misurabili</span>. Ne mettiamo tre a confronto, l'una inclusa propriamente nell'altra.
+</div>
+
+<table id='formula'>
+  <tr>
+    <th class="knob" id='knob0' onclick='clicked_term(0)'>
+      <span class='term'> $$ \mathscr B (\mathbb R) $$ </span></th>
+    <th class="knob" id='knob1' onclick='clicked_term(1)'>
+      <span class='term'> $$ \subsetneq $$ </span></th>
+    <th class="knob" id='knob2' onclick='clicked_term(2)'>
+      <span class='term'> $$ \mathcal L (\mathbb R) $$ </span></th>
+    <th class="knob" id='knob3' onclick='clicked_term(3)'>
+      <span class='term'> $$ \subsetneq $$ </span></th>
+    <th class="knob" id='knob4' onclick='clicked_term(4)'>
+      <span class='term'> $$ \mathcal P (\mathbb R) $$ </span></th>
+  </tr>
+</table>
+
+<div id='container'>
+<div class='text drawer' id='drawer0'>
+<h2><span class='c'>\(\sigma\)-algebra dei boreliani su \(\mathbb R\)</span></h2>
+<p> Consiste nella \(\sigma\)-algebra su \(\mathbb R\) generata dai suoi aperti, ovvero la più piccola \(\sigma\)-algebra che contiene tutti gli insiemi aperti di \(\mathbb R\).</p>
+
+<p>Più concretamente, si può caratterizzare \(\mathscr B (\mathbb R)\) come la famiglia di sottoinsiemi di \(\mathbb R\) tale che
+<ul>
+  <li>Se \(A\) è un aperto di \(\mathbb R\) allora \(A \in \mathscr B (\mathbb R)\).</li>
+  <li>Se \(A \in \mathscr B (\mathbb R)\) allora il suo complementare \(A^c \in \mathscr B (\mathbb R)\).</li>
+  <li>L'unione arbitraria di elementi di \(\mathscr B (\mathbb R)\) appartiene ancora a \(\mathscr B (\mathbb R)\).</li>
+  <li>Ogni elemento di \(\mathscr B (\mathbb R)\) si può ottenere come combinazione dei punti precedenti.</li>
+</ul></p>
+<p>Possiamo infine dotare lo spazio misurabile \(\left(\mathbb R, \mathscr B (\mathbb R)\right)\) di una misura, definendola nel modo ovvio sugli intervalli e poi estendendola a tutti gli altri elementi (ogni insieme Borel-misurabile può essere "approssimato" bene a piacimento da un'unione numerabile disgiunta di intervalli aperti), ottenendo così lo spazio di misura dei boreliani.</p>
+</div>
+<div class='text drawer' id='drawer1'>
+
+<h2><span class='c'>Una questione di cardinalit&agrave</span></h2>
+
+È facile constatare che ogni insieme misurabile secondo Borel lo è anche secondo Lebesgue (la misura di Lebesgue è il completamento di quella di Borel).
+Più interessante è mostrare come mai si ha l'inclusione stretta. Potrebbe non venire immediatamente in mente un esempio di insieme misurabile secondo Lebesgue e non secondo Borel, ma la verità è che - in termini di cardinalità - gli insiemi misurabili sono come un granello di sabbia in mezzo ad un mare di boreliani
+
+
+</div>
+<div class='text drawer' id='drawer2'>
+<h2><span class='c'>\(\sigma\)-algebra di Lebesgue su \(\mathbb R\)</span></h2>
+<p>Per parlare della \(\sigma\)-algebra di Lebesgue dobbiamo prima definire cos'è la misura esterna di Lebesgue.</p>
+<p>Partiamo da un intervallo aperto, \( \ I = (a,b)\): è ragionevole assegnargli come lunghezza \(l(I)\) il valore \(b - a\). Se l'intervallo è limitato diciamo che \(l(I) = +\infty\).</p>
+<p>Come facciamo ad assegnare una "lunghezza" (o meglio, una misura) ad un sottoinsieme qualunque \(A \subseteq \mathbb R\)? Possiamo provare a decomporre \(A\) come unione disgiunta di intervalli aperti, e poi sommare le loro lunghezze; ma non è sempre possibile fare una simile decomposizione.</p>
+<p>Ciò che invece possiamo fare è considerare <b>tutti</b> i modi in cui <span class="green">un'unione numerabile di intervalli aperti possono "coprire" \(A\)</span>, e per ognuno di questi modi vedere qual è <span class="red">la somma delle lunghezze degli intervalli</span>. <span class="yellow">L'estremo inferiore</span> di tutte queste possibilità è proprio la <span class="blue">misura esterna di Lebesgue</span>:
+  <span class="toowide">$$\color{#1982c4}{m_1^*(A)} = 
+    \color{#e4a700}{\inf} \left\{
+    \color{#ff595e}{\sum_{n \in \mathbb N} l(I_n)} : 
+    \color{#6db100}{A \subseteq \bigcup_{n \in \mathbb N} I_n},
+    \quad I_n \text { intervalli aperti }\right\}.$$</span></p>
+
+<p>L'unico problema è che la misura esterna... non è una misura: non rispetta la \(\sigma\)-additività. Allora introduciamo finalmente la \(\sigma\)-algebra di Lebesgue, una famiglia di sottoinsiemi di \(\mathbb R\) scelta apposta in modo che, ristretta a tali insiemi, la misura esterna di Lebesgue sia \(\sigma\)-additiva. Il criterio che un sottoinsieme \(A \subseteq \mathbb R\) deve soddisfare per essere misurabile secondo Lebesgue
+  ovvero \( ( \)ovvero che \(A \in \mathcal L (\mathbb R) ) \) è il seguente:
+  $$ \forall E\subseteq \mathbb R, \ m_1^{*}(E)=m_1^*\left(E\cap A\right)+m_1^*\left(E\cap A^c\right) $$
+  ovvero \(A\) deve "decomporre bene" ogni insieme campione \(E\subseteq \mathbb R\) secondo la misura esterna di Lebesgue.<br>
+Ristretta alla \(\sigma\)-algebra di Lebesgue \(m_1^*\) è quindi una misura, detta semplicemente misura di Lebesgue e denotata con \(m_1\), da cui otteniamo lo spazio di misura di Lebesgue \( (\mathbb R, \mathcal L (\mathbb R), m_1) \).
+</p>
+<p>Un'importante proprietà della misura di Lebesgue è che è <b>completa</b>, ovvero ogni sottoinsieme di un insieme di misura nulla è misurabile e ha misura nulla.
+In effetti un altro modo di definire lo spazio di misura di Lebesgue è come il <b>completamento</b> dello spazio di misura di Borel, ovvero definire la \(\sigma\)-algebra di Lebesgue come la più piccola \(\sigma\)-algebra completa che contiene \(\mathscr B (\mathbb R) \).</p>
+</div>
+<div class='text drawer' id='drawer3'>
+
+<h2><span class='c'>L'insieme di Vitali</span></h2>
+
+<p>La definizione di \(\sigma\)-algebra di Lebesgue è piuttosto robusta, e include una classe di insiemi talmente ampia che non è affatto facile dedurre l'esistenza di un insieme non misurabile secondo Lebesgue. 
+In effetti si è trattato di un problema interessante per i matematici del '900, risolto con successo nel 1905 dal matematico italiano Giuseppe Vitali.</p>
+
+<p>L'esempio di sottoinsieme di \(\mathbb R\) non misurabile secondo Lebesgue porta il nome del suo primo scopritore ed è dunque detto insieme di Vitali.</p>
+
+<span class="knob" id="knob7" onclick="clicked(7)">
+Costruzione dell'insieme di Vitali
+</span>
+
+<div class="drawer" id="drawer7">
+<p>Sull'intervallo \([0,1]\) consideriamo la seguente relazione di equivalenza:
+$$ x \ \rho \ y \iff x-y \in \mathbb{Q}. $$
+Possiamo allora considerare l'insieme di tutte le classi di equivalenza indotte dalla relazione appena definita. Osserviamo che ogni classe contiene un'infinità numerabile di elementi; inoltre queste devono essere una infinità non numerabile, poiché se fossero un'infinità numerabile avremmo che l'insieme \([0,1]\) stesso sarebbe numerabile (in quanto unione numerabile di insiemi numerabili).</p>
+
+<p>Per <i>l'assioma della scelta</i> esiste un insieme che contiene esattamente un rappresentante di ogni classe di equivalenza: chiamiamo tale insieme V. L'insieme così costruito è l'insieme di Vitali.</p>
+
+<p>Osserviamo infine che V è quindi un sottoinsieme non numerabile di \([0,1]\).</p>
+</div>
+
+<span class="knob" id="knob8" onclick="clicked(8)">
+Non misurabilità dell'insieme di Vitali
+</span>
+
+<div class="drawer" id="drawer8">
+<p>Consideriamo \(\mathbb{Q} \cap [-1,1]\).<br>
+Sia \(\{q_n\}\) una numerazione degli elementi di \(\mathbb{Q} \cap [-1,1]\) e definiamo \(V_n=V+q_n \subseteq [-1,2]\).</p>
+
+<p>Notiamo che:<br>
+
+<div class="knob" id="knob5" onclick="clicked(5)">
+  \((1)\) I traslati di \(V\) sono disgiunti, ovvero \(V_n \cap V_m=\emptyset\) per \(n \neq m\).</div>
+<div class="drawer" id="drawer5">
+<p>Dimostriamolo per assurdo: sia \( x\in V_n \cap V_m \). Allora si ha:
+  \begin{align*}
+      x \in V_n &\implies x=y+q_n, \ &y\in V, q_n\in \mathbb{Q}\cap [-1,1] \\
+      x \in V_m &\implies x=z+q_m, \ &z\in V, q_m\in \mathbb{Q}\cap [-1,1] \\
+  \end{align*}
+  da cui segue che
+  \begin{align*}
+      y+q_n=z+q_m \implies y-z=q_m-q_n \in \mathbb{Q} \implies y=z.\\
+  \end{align*}
+  Da ciò deduciamo che \( q_n=q_m \) ed infine \(n=m\) che è assurdo, poiché avevamo supposto \(n\neq m\).</p>
+</div>
+
+<div class="knob" id="knob6" onclick="clicked(6)">
+$$(2) \qquad [0,1] \subseteq \bigcup_{n=1}^{+\infty} V_n  \subseteq [-1,2] $$
+</div>
+
+<div class="drawer" id="drawer6">
+<p>Sia \(x \in [0,1]\), allora esiste \(y \in V\) tale che \(x-y=q \in \mathbb{Q}\), da cui ricaviamo che \( x=y+q=y+q_n \) per un certo \(n\). Quindi abbiamo appena mostrato che \(x \in V_n\) per un certo \(n\), perciò vale la prima inclusione.</p>
+<p>La seconda inclusione segue dalla definizione dei \(V_n\).</p>
+</div>
+
+</p>
+
+<p>Dalle precedenti osservazioni otteniamo i seguenti fatti:
+<ul>
+
+<li>Da \((2)\), per monotonia della misura:
+  $$ 1 = m_1([0,1]) \leq
+    m_1\left(\bigcup_{n=1}^{+\infty} V_n\right) \leq
+    m_1([-1,2]) = 3 $$ </li>
+
+<li>Da \((1)\), per le proprietà di \(\sigma\)-additività e invarianza per traslazioni della misura di Lebesgue:
+  $$ \begin{align} m_1 \left( \bigcup_{n=1}^{+\infty} V_n\right) &= 
+  \sum_{n=1}^{+\infty}m_1(V_n) \\ &= 
+  \sum_{n=1}^{+\infty}m_1(V) = 
+  \begin{cases}
+    0 & m_1(V)=0 \\ 
+    +\infty & m_1(V)>0\\ 
+  \end{cases} \end{align} $$</li>
+
+</ul></p>
+
+<p>In conclusione, se \(V\) fosse misurabile secondo Lebesgue, anche i suoi traslati \(V_n\) sarebbero misurabili
+ed avrebbero la stessa misura di \(V\) per quanto appena visto, ma ciò è in contraddizione con il fatto che la misura di \(\bigcup_{n=1}^{+\infty} V_n\) è compresa fra 1 e 3. Pertanto \(V\) non può essere misurabile.</p>
+
+</div>
+
+<span class="knob" id="knob9" onclick="clicked(9)">
+  Assioma della scelta
+</span>
+
+<div class="drawer" id="drawer9">
+<p>Nella costruzione dell'insieme di Vitali abbiamo dovuto fare ricorso al seguente assioma della logica matematica:</p>
+
+<p><i><b>Assioma della scelta:</b> data una qualunque famiglia 
+  \(\mathfrak F = \{ X_i\}_{i \in I}\) di insiemi non vuoti, esiste una funzione di scelta
+  \( f : \mathfrak F \rightarrow \bigcup_{i \in I} X_i \)
+tale che \(f(X_i)\in X_i\) per ogni \(i \in I\);</i></p>
+
+<p>ovvero data una famiglia di insiemi non vuoti esiste una funzione \(f\), detta funzione di scelta, che associa ad ogni insieme della famiglia un suo elemento - in parole povere, ci è dato scegliere un elemento da ogni insieme della famiglia.</p>
+
+<p>Potrebbe sembrare piuttosto innocuo, e in effetti la maggior parte dei matematici implicitamente lo accettano senza problemi. Ma assumerlo porta anche a conseguenze inaspettate (come il famoso paradosso di Banach-Tarski) perciò - dal punto di vista logico - quando se ne fa uso è sempre bene sottolinearlo.</p>
+
+<p>Ma allora anzichè l'insieme di Vitali, non potremmo trovare un altro esempio che non preveda l'assioma?
+In realtà no: è stato dimostrare che ogni sottoinsieme non misurabile secondo Lebesgue si può costruire solo facendo uso dell'assioma della scelta.<br>
+In effetti nel 1970 <a href="https://www.researchgate.net/publication/239065757_A_Model_of_Set_Theory_in_Which_Every_Set_of_Reals_is_Lebesgue_Measurable"> in un paper </a> Robert Solovay costruì un modello della teoria degli insiemi di Zermelo-Fraenkel senza assumere l'assioma della scelta dove tutti gli insiemi di numeri reali sono misurabili secondo Lebesgue.</p>
+</div>
+</div>
+<div class='text drawer' id='drawer4'>
+  <h2><span class='c'>\(\sigma\)-algebra delle parti di \(\mathbb R\)</span></h2>
+  Questa \(\sigma\)-algebra è piuttosto banale: vi appartengono <b>tutti</b> i sottoinsiemi di \(\mathbb R\). Non ci stupisce particolarmente che sia chiusa per complementi e unione numerabile.
+</div>
+</div>
+</div>
+
+<div id="outro">Giacomo Maletto, Pietro Piras, Vito Volpe</div>
+
+<script>
+  // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+// We listen to the resize event
+window.addEventListener('resize', () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
+
+  var drawed = []; for(var i=0; i<100; i++){ drawed[i] = false; }
+  var drawed_term = false;
+
+  document.body.classList.add("fadeIn");
+
+  function clicked_term(n) {
+    if (drawed_term === false) {
+      draw(n);
+      drawed_term = n;
+    }
+    else if (drawed_term !== n) {
+      undraw(drawed_term);
+      draw(n);
+      drawed_term = n;
+    }
+    else if (drawed_term === n) {
+      undraw(n);
+      drawed_term = false;
+    }
+  }
+
+  function clicked(n) {
+    if (drawed[n] === false) {
+      draw(n);
+    }
+    else if (drawed[n] === true) {
+      undraw(n);
+    }
+  }
+
+  function draw(n) {
+    document.getElementById("knob"+n).classList.add("drawed");
+    document.getElementById("drawer"+n).classList.add("drawed");
+    drawed[n] = true;
+  }
+
+  function undraw(n) {
+    document.getElementById("knob"+n).classList.remove("drawed");
+    document.getElementById("drawer"+n).classList.remove("drawed");
+    drawed[n] = false;
+  }
+</script>
+</body>
+</html>
