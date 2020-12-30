@@ -93,6 +93,7 @@ body {
   border-radius: 0.3rem;
   cursor: pointer;
   text-align: center;
+  outline: none; /*per evitare il contorno giallo su chrome*/
 }
 
 .knob:not(.drawed) {
@@ -156,7 +157,7 @@ a {
 }
 
 .toowide {
-  overflow-x: auto;
+  overflow-x: scroll;
   max-width: 100%;
 }
 
