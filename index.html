@@ -92,6 +92,7 @@ body {
   text-align: center;
   padding: 0.2rem;
   margin: 0.2rem;
+  white-space:nowrap;
 }
 
 .knob:not(.drawed) {
@@ -173,6 +174,12 @@ h3 {
   text-align: center;
 }
 
+#drawer12 {
+  max-width: min(25rem, 80%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 </style>
 
 <title>Le tribù di R</title>
@@ -183,7 +190,17 @@ h3 {
 <div id="content">
 <div id="intro">
 <h1><span class='c'>Le tribù di \(\mathbb R\)</span></h1>
-Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>, com'erano chiamate dal gruppo Bourbaki) di \(\mathbb R\) è una famiglia di sottoinsiemi di \(\mathbb R\) chiusa per complementi e unione numerabile, i cui elementi sono detti <span class='c'>misurabili</span>. Ne mettiamo tre a confronto, l'una inclusa propriamente nell'altra.
+Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>, com'erano chiamate dal gruppo Bourbaki) di \(\mathbb R\) è una famiglia di sottoinsiemi di \(\mathbb R\) chiusa per complementi e unione numerabile, i cui elementi sono detti <span class='c'>misurabili</span>. Ne mettiamo tre a confronto. Se vale <span class="knob" id="knob12" onclick="clicked(12)">l'assioma della scelta</span></textarea>, allora
+<div class="drawer" id="drawer12">
+<p><i><b>Assioma della scelta:</b> data una qualunque famiglia 
+  \(\mathfrak F = \{ X_i\}_{i \in I}\) di insiemi non vuoti, esiste una funzione di scelta
+  \( f : \mathfrak F \rightarrow \bigcup_{i \in I} X_i \)
+tale che \(f(X_i)\in X_i\) per ogni \(i \in I;\)</i></p>
+  
+<p>ovvero data una famiglia di insiemi non vuoti esiste una funzione \(f\), detta funzione di scelta, che associa ad ogni insieme della famiglia un suo elemento - in parole povere, ci è dato scegliere un elemento da ogni insieme della famiglia.</p>
+<p>Scopriremo che se non assumiamo l'assioma della scelta allora le seguenti inclusioni in realtà non sono per forza strette.</p>
+</div>
+
 </div>
 
 <table id='main_formula'>
@@ -206,14 +223,49 @@ Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>,
 <h3><span class='c'>\(\sigma\)-algebra dei boreliani su \(\mathbb R\)</span></h3>
 <p> Consiste nella \(\sigma\)-algebra su \(\mathbb R\) generata dai suoi aperti, ovvero la più piccola \(\sigma\)-algebra che contiene tutti gli insiemi aperti di \(\mathbb R\).</p>
 
-<p>Più concretamente, si può caratterizzare \(\mathscr B (\mathbb R)\) come la famiglia di sottoinsiemi di \(\mathbb R\) tale che
-<ul>
-  <li>Se \(A\) è un aperto di \(\mathbb R\) allora \(A \in \mathscr B (\mathbb R)\).</li>
-  <li>Se \(A \in \mathscr B (\mathbb R)\) allora il suo complementare \(A^c \in \mathscr B (\mathbb R)\).</li>
-  <li>L'unione arbitraria di elementi di \(\mathscr B (\mathbb R)\) appartiene ancora a \(\mathscr B (\mathbb R)\).</li>
-  <li>Ogni elemento di \(\mathscr B (\mathbb R)\) si può ottenere come combinazione dei punti precedenti.</li>
-</ul></p>
-<p>Possiamo infine dotare lo spazio misurabile \(\left(\mathbb R, \mathscr B (\mathbb R)\right)\) di una misura, definendola nel modo ovvio sugli intervalli e poi estendendola a tutti gli altri elementi (ogni insieme Borel-misurabile può essere "approssimato" bene a piacimento da un'unione numerabile disgiunta di intervalli aperti) ottenendo così lo spazio di misura dei boreliani.</p>
+<p> Un modo di definirla consiste nel prendere tutte le possibili \(\sigma\)-algebre che contengono gli aperti, e farne l'intersezione. Poichè vale che l'intersezione di \(\sigma\)-algebre è ancora una \(\sigma\)-algebra, la definizione è sensata.</p>
+<p>Questa è una definizione "dall'alto" nel senso che si parte da \(\sigma\)-algebre più ampie e se ne ottiene una più piccola tramite intersezione. Ma sarebbe comodo avere anche una definizione "dal basso": a partire dagli insiemi aperti costruire via via tutti gli altri elementi.
+Questa definizione avrebbe un aspetto simile:</p>
+<p>&laquo;\(\mathscr B (\mathbb R)\) è definito come la famiglia di sottoinsiemi di \(\mathbb R\) tale che
+<ul style="margin-top:-1em">
+    <li>Se \(A\) è un aperto di \(\mathbb R\) allora \(A \in \mathscr B (\mathbb R)\).</li>
+    <li>Se \(A \in \mathscr B (\mathbb R)\) allora il suo complementare \(A^c \in \mathscr B (\mathbb R).\)</li>
+    <li>L'unione arbitraria di elementi di \(\mathscr B (\mathbb R)\) appartiene ancora a \(\mathscr B (\mathbb R)\).</li>
+    <li>Ogni elemento di \(\mathscr B (\mathbb R)\) si può ottenere <b>"come combinazione dei punti precedenti"</b>.&raquo;</li>
+  </ul></p>
+<p>Il difficile sta proprio nel formalizzare cosa si intende per "combinazione dei punti precedenti". Possiamo intendere ciò come una successione di operazioni:</p>
+<ul style="margin-top:0em">
+  <li>Per questioni che ci toccheranno in seguito, partiamo dall'insieme degli <b>intervalli</b> aperti di \(\mathbb R\) (compresi anche quelli illimitati e l'insieme vuoto). Denotiamo questo insieme \(\mathscr E.\)</li>
+  <li>Ora ci aggiungiamo i complementari, definendo \(\mathscr E^c := \{I^c : I \in \mathscr E \}.\) Quello che abbiamo finora lo denotiamo con $$\mathscr F_1 := \mathscr E \cup \mathscr E^c.$$</li>
+  <li>A questo punto aggiungiamo l'insieme di ogni possibile unione numerabile degli elementi già ottenuti, ponendo \((\mathcal F_1)^{\sigma} := \left\{ \bigcup_{i=1}^{+\infty}E_i : E_i \in \mathcal F_1 \right\}.\) Prendiamo anche i complementari degli elementi di tale famiglia, ottenendo $$\mathscr F_2 := (\mathscr F_1)^{\sigma} \cup ((\mathscr F_1)^{\sigma})^c$$ (data una generica famiglia \(\mathscr F\), si definiscono \(\mathscr F^c\) e \(\mathscr F^{\sigma}\) in modo analogo a quanto visto prima). Questa è la famiglia formata da tutti gli insiemi aperti e tutti quelli chiusi.</li>
+  <li>Andiamo avanti: a partire da questa famiglia ne otteniamo di sempre più grandi tramite unioni numerabili e complementi: all'\(i\)-esimo passaggio abbiamo $$\mathscr F_{i+1} := (\mathscr F_i)^{\sigma} \cup ((\mathscr F_i)^{\sigma})^c.$$</li>
+</ul>
+<p>Quando ci fermiamo? Quante volte dobbiamo applicare tale procedimento per ottenere tutto \(\mathscr B(\mathbb R)\)? Forse basta ripetere tali passaggi un numero numerabile di volte: definiamo $$\mathscr B_? (\mathbb R) := \bigcup_{i=1}^{+\infty} \mathscr F^i.$$ </p>
+<p>Purtroppo non basta: questa famiglia non è una \(\sigma\)-algebra, perchè non è chiusa per unione numerabile.<br>
+Infatti data una successione di sottoinsiemi \(B_i \in \mathscr B_? (\mathbb R)\), l'unione \(\bigcup_{i=1}^{+\infty} B_i\) non sta per forza in \(\mathscr B_? (\mathbb R)\). Questo è dovuto al fatto che, per definizione, per ogni \( i \) esiste un \(n_i\) tale che \( B_i \in \mathscr F^{n_i}\), e se la successione \((n_i)_{i=1}^{+\infty}\) non è limitata superiormente nulla garantisce che l'unione dei \(B_i\) stia ancora in \(\mathscr B_? (\mathbb R).\)</p>
+<p>Ma allora quante volte bisogna ripetere le operazioni delineate sopra? Su quale insieme \(A\) devono variare gli indici se vogliamo che \(\mathscr B (\mathbb R) = \bigcup_{x \in A}\mathscr F^x\)?<br> 
+La risposta è \(\Omega\), l'insieme degli ordinali numerabili. </p>
+<p>Questo è un insieme molto particolare, costruibile solo tramite un equivalente dell'assioma della scelta. In poche parole, si può vedere come un'estensione dei numeri naturali nella quel ogni successione numerabile è limitata superiormente: ma allora non si incorre nel problema di prima, e dunque \(\bigcup_{x \in \Omega}\mathscr F^x\) è una \(\sigma\)-algebra! È anche la più piccola, e dunque si tratta proprio di \(\mathscr B (\mathbb R).\) Questo si dimostra tramite induzione, ma attenzione: essendo su \(\Omega\) anzichè su \(\mathbb N\), dovremo utilizzare un processo speciale noto come <i>induzione transfinita</i>.</p>
+<div class="knob" id="knob13" onclick="clicked(13)">
+\(\Omega\), l'insieme degli ordinali numerabili
+</div>
+  
+<div class="drawer" id="drawer13">
+</div>
+
+<div class="knob" id="knob14" onclick="clicked(14)">
+L'induzione transfinita 
+</div>
+
+<div class="drawer" id="drawer14">
+</div>
+
+<div class="knob" id="knob15" onclick="clicked(15)">
+\(\mathscr B (\mathbb R) = \bigcup_{x \in \Omega}\mathscr F^x\)
+</div>
+
+<div class="drawer" id="drawer15">
+</div>
 </div>
 
 <div class="text drawer" id="drawer1">
@@ -225,7 +277,9 @@ Più interessante è mostrare come mai si ha l'inclusione stretta. Potrebbe non 
 <div class="knob" id='knob10' onclick='clicked(10)'>
 \(\mathscr B (\mathbb R)\) ha la cardinalità di \(\mathbb R\)
 </div>
-<div class="drawer" id="drawer10">a</div>
+<div class="drawer" id="drawer10">
+
+</div>
 
 <div class="knob" id='knob11' onclick='clicked(11)'>
 \(\mathcal L (\mathbb R)\) ha la cardinalità di \(\mathcal P(\mathbb R\))
@@ -340,23 +394,15 @@ ed avrebbero la stessa misura di \(V\) per quanto appena visto, ma ciò è in co
 </div>
 
 <div class="knob" id="knob9" onclick="clicked(9)">
-  Assioma della scelta
+  Ruolo dell'assioma della scelta
 </div>
 
 <div class="drawer" id="drawer9">
-<p>Nella costruzione dell'insieme di Vitali abbiamo dovuto fare ricorso al seguente assioma della logica matematica:</p>
+<p>Nella costruzione dell'insieme di Vitali abbiamo dovuto fare ricorso all'assioma della scelta.</p>
+<p>Potrebbe sembrare piuttosto innocuo, e in effetti la maggior parte dei matematici implicitamente accettano tale assioma senza problemi. Ma assumerlo porta anche a conseguenze inaspettate (come il famoso paradosso di Banach-Tarski, il quale tra l'altro sfrutta proprio l'esistenza di insiemi non Lebesgue-misurabili) perciò - dal punto di vista logico - quando se ne fa uso è sempre bene sottolinearlo.</p>
 
-<p><i><b>Assioma della scelta:</b> data una qualunque famiglia 
-  \(\mathfrak F = \{ X_i\}_{i \in I}\) di insiemi non vuoti, esiste una funzione di scelta
-  \( f : \mathfrak F \rightarrow \bigcup_{i \in I} X_i \)
-tale che \(f(X_i)\in X_i\) per ogni \(i \in I\);</i></p>
-
-<p>ovvero data una famiglia di insiemi non vuoti esiste una funzione \(f\), detta funzione di scelta, che associa ad ogni insieme della famiglia un suo elemento - in parole povere, ci è dato scegliere un elemento da ogni insieme della famiglia.</p>
-
-<p>Potrebbe sembrare piuttosto innocuo, e in effetti la maggior parte dei matematici implicitamente lo accettano senza problemi. Ma assumerlo porta anche a conseguenze inaspettate (come il famoso paradosso di Banach-Tarski) perciò - dal punto di vista logico - quando se ne fa uso è sempre bene sottolinearlo.</p>
-
-<p>Ma allora anzichè l'insieme di Vitali, non potremmo trovare un altro esempio che non preveda l'assioma?
-In realtà no: è stato dimostrare che ogni sottoinsieme non misurabile secondo Lebesgue si può costruire solo facendo uso dell'assioma della scelta.<br>
+<p>Ma allora anzichè l'insieme di Vitali, non potremmo trovare un altro esempio che non preveda l'assioma della scelta?
+In realtà no: è stato dimostrare che ogni sottoinsieme non misurabile secondo Lebesgue si può costruire solo facendo uso dell'assioma.<br>
 In effetti nel 1970 <a href="https://www.researchgate.net/publication/239065757_A_Model_of_Set_Theory_in_Which_Every_Set_of_Reals_is_Lebesgue_Measurable" target="_blank"> in un paper </a> Robert Solovay costruì un modello della teoria degli insiemi di Zermelo-Fraenkel senza assumere l'assioma della scelta dove tutti gli insiemi di numeri reali sono misurabili secondo Lebesgue.</p>
 </div>
 </div>
