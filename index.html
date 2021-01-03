@@ -180,6 +180,10 @@ h3 {
   margin-right: auto;
 }
 
+.qed {
+  text-align: right;
+}
+
 </style>
 
 <title>Le tribù di R</title>
@@ -190,9 +194,9 @@ h3 {
 <div id="content">
 <div id="intro">
 <h1><span class='c'>Le tribù di \(\mathbb R\)</span></h1>
-Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>, com'erano chiamate dal gruppo Bourbaki) di \(\mathbb R\) è una famiglia di sottoinsiemi di \(\mathbb R\) chiusa per complementi e unione numerabile, i cui elementi sono detti <span class='c'>misurabili</span>. Ne mettiamo tre a confronto. Se vale <span class="knob" id="knob12" onclick="clicked(12)">l'assioma della scelta</span></textarea>, allora
+Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>, com'erano chiamate dal gruppo Bourbaki) di \(\mathbb R\) è una famiglia di sottoinsiemi di \(\mathbb R\) chiusa per complementi e unione numerabile, i cui elementi sono detti <span class='c'>misurabili</span>. Ne mettiamo tre a confronto. Se vale <span class="knob" id="knob12" onclick="clicked(12)">l'assioma della scelta</span></textarea> allora
 <div class="drawer" id="drawer12">
-<p><i><b>Assioma della scelta:</b> data una qualunque famiglia 
+<p><span class="c">Assioma della scelta</span>: <i>data una qualunque famiglia 
   \(\mathfrak F = \{ X_i\}_{i \in I}\) di insiemi non vuoti, esiste una funzione di scelta
   \( f : \mathfrak F \rightarrow \bigcup_{i \in I} X_i \)
 tale che \(f(X_i)\in X_i\) per ogni \(i \in I;\)</i></p>
@@ -237,34 +241,85 @@ Questa definizione avrebbe un aspetto simile:</p>
 <ul style="margin-top:0em">
   <li>Per questioni che ci toccheranno in seguito, partiamo dall'insieme degli <b>intervalli</b> aperti di \(\mathbb R\) (compresi anche quelli illimitati e l'insieme vuoto). Denotiamo questo insieme \(\mathscr E.\)</li>
   <li>Ora ci aggiungiamo i complementari, definendo \(\mathscr E^c := \{I^c : I \in \mathscr E \}.\) Quello che abbiamo finora lo denotiamo con $$\mathscr F_1 := \mathscr E \cup \mathscr E^c.$$</li>
-  <li>A questo punto aggiungiamo l'insieme di ogni possibile unione numerabile degli elementi già ottenuti, ponendo \((\mathcal F_1)^{\sigma} := \left\{ \bigcup_{i=1}^{+\infty}E_i : E_i \in \mathcal F_1 \right\}.\) Prendiamo anche i complementari degli elementi di tale famiglia, ottenendo $$\mathscr F_2 := (\mathscr F_1)^{\sigma} \cup ((\mathscr F_1)^{\sigma})^c$$ (data una generica famiglia \(\mathscr F\), si definiscono \(\mathscr F^c\) e \(\mathscr F^{\sigma}\) in modo analogo a quanto visto prima). Questa è la famiglia formata da tutti gli insiemi aperti e tutti quelli chiusi.</li>
-  <li>Andiamo avanti: a partire da questa famiglia ne otteniamo di sempre più grandi tramite unioni numerabili e complementi: all'\(i\)-esimo passaggio abbiamo $$\mathscr F_{i+1} := (\mathscr F_i)^{\sigma} \cup ((\mathscr F_i)^{\sigma})^c.$$</li>
+  <li>A questo punto aggiungiamo l'insieme di ogni possibile unione numerabile degli elementi già ottenuti, ponendo \((\mathscr F_1)^{\sigma} := \left\{ \bigcup_{i=1}^{+\infty}E_i : E_i \in \mathscr F_1 \right\}.\) Prendiamo anche i complementari degli elementi di tale famiglia, ottenendo $$\mathscr F_2 := (\mathscr F_1)^{\sigma} \cup ((\mathscr F_1)^{\sigma})^c$$ (data una generica famiglia \(\mathscr F\), si definiscono \(\mathscr F^c\) e \(\mathscr F^{\sigma}\) in modo analogo a quanto visto prima). Questa è la famiglia formata da tutti gli insiemi aperti e tutti quelli chiusi.</li>
+  <li>Andiamo avanti. A partire da questa famiglia ne otteniamo di sempre più grandi tramite unioni numerabili e complementi: all'\(i\)-esimo passaggio abbiamo $$\mathscr F_{i+1} := (\mathscr F_i)^{\sigma} \cup ((\mathscr F_i)^{\sigma})^c.$$</li>
 </ul>
-<p>Quando ci fermiamo? Quante volte dobbiamo applicare tale procedimento per ottenere tutto \(\mathscr B(\mathbb R)\)? Forse basta ripetere tali passaggi un numero numerabile di volte: definiamo $$\mathscr B_? (\mathbb R) := \bigcup_{i=1}^{+\infty} \mathscr F^i.$$ </p>
+<p>Quando ci fermiamo? Quante volte dobbiamo applicare tale procedimento per ottenere tutto \(\mathscr B(\mathbb R)\)? Forse basta ripetere tali passaggi un numero numerabile di volte: definiamo $$\mathscr B_? (\mathbb R) := \bigcup_{i \in \mathbb N} \mathscr F_i.$$ </p>
 <p>Purtroppo non basta: questa famiglia non è una \(\sigma\)-algebra, perchè non è chiusa per unione numerabile.<br>
-Infatti data una successione di sottoinsiemi \(B_i \in \mathscr B_? (\mathbb R)\), l'unione \(\bigcup_{i=1}^{+\infty} B_i\) non sta per forza in \(\mathscr B_? (\mathbb R)\). Questo è dovuto al fatto che, per definizione, per ogni \( i \) esiste un \(n_i\) tale che \( B_i \in \mathscr F^{n_i}\), e se la successione \((n_i)_{i=1}^{+\infty}\) non è limitata superiormente nulla garantisce che l'unione dei \(B_i\) stia ancora in \(\mathscr B_? (\mathbb R).\)</p>
-<p>Ma allora quante volte bisogna ripetere le operazioni delineate sopra? Su quale insieme \(A\) devono variare gli indici se vogliamo che \(\mathscr B (\mathbb R) = \bigcup_{x \in A}\mathscr F^x\)?<br> 
+Infatti data una successione di sottoinsiemi \(B_i \in \mathscr B_? (\mathbb R)\), l'unione \(\bigcup_{i=1}^{+\infty} B_i\) non sta per forza in \(\mathscr B_? (\mathbb R)\). Questo è dovuto al fatto che, per definizione, per ogni \( i \) esiste un \(n_i\) tale che \( B_i \in \mathscr F_{n_i}\), e se l'insieme degli \(\{n_i\}\) non è limitato superiormente nulla garantisce che l'unione dei \(B_i\) stia ancora in \(\mathscr B_? (\mathbb R).\)</p>
+<p>Ma allora quante volte bisogna ripetere le operazioni delineate sopra? Su quale insieme \(A\) devono variare gli indici se vogliamo che \(\mathscr B (\mathbb R) = \bigcup_{x \in A}\mathscr F_x\)?<br> 
 La risposta è \(\Omega\), l'insieme degli ordinali numerabili. </p>
-<p>Questo è un insieme molto particolare, costruibile solo tramite un equivalente dell'assioma della scelta. In poche parole, si può vedere come un'estensione dei numeri naturali nella quel ogni successione numerabile è limitata superiormente: ma allora non si incorre nel problema di prima, e dunque \(\bigcup_{x \in \Omega}\mathscr F^x\) è una \(\sigma\)-algebra! È anche la più piccola, e dunque si tratta proprio di \(\mathscr B (\mathbb R).\) Questo si dimostra tramite induzione, ma attenzione: essendo su \(\Omega\) anzichè su \(\mathbb N\), dovremo utilizzare un processo speciale noto come <i>induzione transfinita</i>.</p>
+<p>Questo è un insieme molto particolare, che noi costruiremo tramite un equivalente dell'assioma della scelta. In poche parole, si può vedere come un'estensione dei numeri naturali nella quel ogni insieme numerabile è limitato superiormente: ma allora non si incorre nel problema di prima, e dunque \(\bigcup_{x \in \Omega}\mathscr F_x\) è una \(\sigma\)-algebra! È anche la più piccola, quindi si tratta proprio di \(\mathscr B (\mathbb R).\) Questo si dimostra tramite induzione, ma attenzione: essendo su \(\Omega\) anzichè su \(\mathbb N\), dovremo utilizzare un processo speciale noto come <i>induzione transfinita</i>.</p>
 <div class="knob" id="knob13" onclick="clicked(13)">
-\(\Omega\), l'insieme degli ordinali numerabili
+Assioma del buon ordinamento
 </div>
   
 <div class="drawer" id="drawer13">
+<p>Partiamo un po' alla lontana.</p>
+<p>Dato \(X\) insieme, si definisce <span class="c">ordine totale</span> su \(X\) una relazione \(R\) con proprietà analoghe alla familiare \(\le\):</p>
+<ul>
+  <li>se \(x \ R \ y\) e \(y \ R \ z\) allora \(x \ R \ z\)</li>
+  <li>se \(x \ R \ y\) e \(y \ R \ x\) allora \(x = y\)</li>
+  <li>per ogni \(x \in X, x \ R \ x\)</li>
+  <li>se \(x, y \in X\) allora \(x \ R \ y \lor y \ R \ x.\)</li>
+</ul>
+
+<p>In seguito utilizzeremo il simbolo \(\le\) per denotare un ordine totale e scriveremo che \(x < y\) se \(x \le y\) e \(x \neq y\).<br>
+Diciamo che \(x \in X\) è <span class="c">l'elemento minimo</span> di \(X\) se \(\forall y \in X, y \ R \ x \) implica che \( y = x.\)<br>
+Dato \(x \in X\) si definisce il <span class="c">segmento iniziale</span> di \(x\) l'insieme \(I_x := \{ y \in \Omega : y < x\}.\)</p>
+
+<p>La relazione \(\le\) si dice <span class="c">buon ordine</span> se oltre ad essere un ordine totale vale una condizione aggiuntiva: ogni sottoinsieme non vuoto di \(X\), preso a sè stante, ha un elemento minimo. Se un insieme \(X\) ammette un buon ordine allora si dice che \(X\) è <span class="c">ben ordinato</span>.<br>
+Ad esempio \(\mathbb N\) è ben ordinato tramite la familiare relazione \(\le\): ogni sottoinsieme \(S \neq \emptyset\) di \(\mathbb N\) ha infatti un elemento minimo, un \(n\) tale che \(n \le m\) per ogni \(m \in S\).</p>
+
+<p>Siamo pronti per enunciare un assioma che useremo nella costruzione di \(\Omega\):</p>
+<p><span class="c">Assioma del buon ordinamento</span>: <i>ogni insieme può essere ben ordinato. </i></p>
+Si può dimostrare che questo assioma è equivalente all'assioma della scelta: preso uno dei due si può dimostrare l'altro.<br>
 </div>
 
 <div class="knob" id="knob14" onclick="clicked(14)">
-L'induzione transfinita 
+Insieme degli ordinali numerabili
 </div>
 
 <div class="drawer" id="drawer14">
+<p><b>Teorema</b>: <i>esiste un insieme ben ordinato non numerabile \(\Omega\) tale che per ogni \(x \in \Omega, \ I_x \) è numerabile. </i></p>
+<p><i>Dimostrazione.</i> Sia \(X\) un insieme non numerabile. Per l'assioma del buon ordinamento, \(X\) è ben ordinato. Nel caso in cui valga la condizione cercata (rispetto al buon ordine) abbiamo finito. Altrimenti, sia \(S := \{ x \in X : I_x \) non è numerabile. \(\}\) Per il buon ordinamento di \(X,\) tale sottoinsieme ha un elemento minimo \(x_0,\) e possiamo prendere \(\Omega = I_{x_0}.\) <span style="float:right">\(\tiny\blacksquare\)</span></p>
+Si dimostra che tale insieme è unico a meno di "isomorfismi di ordine".<br>
+Fissiamo un po' di terminologia (come se non l'avessimo fatto fino ad ora):
+<ul>
+  <li>L'insieme \(\Omega\) appena trovato è l'<span class="c">insieme degli ordinali numerabili</span>.</li>
+  <li>I suoi elementi sono giustamente detti <span class="c">ordinali numerabili</span>.</li>
+  <li>Si definisce \(1 := \inf \Omega.\)</li>
+  <li>A partire da \(x \in \Omega\) si definisce \(x + 1 := \inf\{y \in \Omega : y > x\}\) (che esiste in virtù del buon ordinamento di \(\Omega\)) come l'<span class="c">ordinale successore</span> di x, mentre \(x\) è l'<span class="c">ordinale predecessore</span> di \(x+1.\)</li>
+  <li>Non tutti gli elementi di \(\Omega\) hanno un ordinale predecessore (se no avremmo semplicemente \(\mathbb N\)...): quelli che non ce l'hanno sono detti <span class="c">ordinali limiti</span>.</li>
+</ul>
+<p>È importante sapere che è possibile costruire \(\Omega\) anche <a href="https://en.wikipedia.org/wiki/First_uncountable_ordinal" target="_blank">senza</a> fare uso dell'assioma del buon ordinamento, tramite i numeri di Hartog.</p>
 </div>
 
 <div class="knob" id="knob15" onclick="clicked(15)">
-\(\mathscr B (\mathbb R) = \bigcup_{x \in \Omega}\mathscr F^x\)
+Induzione transfinita 
 </div>
 
 <div class="drawer" id="drawer15">
+<p>Dato un qualunque insieme ben ordinato \(X\) vale la seguente importante proprietà:</p>
+<p><span class="c">Principio di induzione transfinita</span>: <i> se \(A\) è un sottoinsieme di \(X\) tale che per ogni \(x \in X\) la condizione \(I_x \subseteq A \) implica che anche \(x \in A\), allora \(A = X.\)</i></p>
+<p><i>Dimostrazione.</i> Se \(X \neq A,\) sia \(x = \text{inf}(X \setminus A).\) Allora \(I_x \subseteq A\) ma \(x \not \in A,\) il che va contro le ipotesi.</p>
+<p>Ad esempio possiamo utilizzare l'induzione transfinita per provare ciò che avevamo affermato prima: ogni sottoinsieme numerabile \(A \in \Omega\) è limitato superiormente. Infatti se \(A\) è numerabile allora anche \(J := \bigcup_{x \in A}I_x\) è numerabile e quindi non può corrispondere a tutto \(\Omega.\) Sia \(x_0 := \inf(\Omega \setminus J)\): allora \(x_0\) limita superiormente \(A\), perchè se ci fosse \(x \in A\) tale che \(x > x_0\) allora si avrebbe che \(x \in I_y\) per qualche \(y \in A\) e dunque si avrebbe che \(x_0 \in I_y\), il che va contro la definizione di \(x_0.\)</p>
+</div>
+
+<div class="knob" id="knob16" onclick="clicked(16)">
+$$\mathscr B (\mathbb R) = \bigcup_{x \in \Omega}\mathscr F^x$$
+</div>
+
+<div class="drawer" id="drawer16">
+<p>Aggiorniamo la definizione degli \(\mathscr F_x\) per \(x \in \Omega\):
+<ul>
+<li>\(\mathscr F_1 := \mathscr E \cup \mathscr E^c.\)</li>
+<li>Se \(x\) ha un ordinale predecessore \(y\) allora $$\mathscr F_x := ( \mathscr F_y)^{\sigma} \cup (\mathscr F_y)^{\sigma})^c. $$</li>
+<li>Se \(x\) è un ordinale limite allora $$ \mathscr F_x := \bigcup_{y < x} \mathscr F_y. $$</li>
+Vogliamo mostrare che \(\mathscr F := \bigcup_{x \in \Omega} \mathscr F_x\) è la più piccola \(\sigma\)-algebra contenente gli aperti.
+</ul></p>
+<p>Prima di tutto osserviamo che \(\mathscr F\) è una \(\sigma\)-algebra: \(\mathbb R \in \mathscr F_1\), se \(E \in \mathscr F_x\) allora \(E^c \in (\mathscr F_x)^c \subseteq \mathscr F_{x+1}\), e se \(E_i \in \mathscr F\) è una successione numerabile di elementi, allora per ogni \(i\) esiste \(x_i\) tale che \(E_i \in \mathscr F_{x_i}\), ma \(\{ x_i \}\) è un insieme numerabile in \(\Omega\) che quindi è limitato superiormente da un qualche \(y\): ma allora per ogni \(i\) si ha che \(E_i \in \mathscr F_y\) e quindi \(\bigcup_{i=1}^{+\infty} E_i \in \mathscr F_{y+1}.\)</p>
+<p>Resta solo da dimostrare che \(\mathscr F\) è la più piccola \(\sigma\)-algebra contenente gli aperti. Certamente gli aperti sono elementi di \(\mathscr F_2.\) Invece, se una \(\sigma\)-algebra contiene gli aperti allora contiene \(\mathscr F_1;\) se contiene un qualche \(\mathscr F_x\) allora contiene \(\mathscr F_{x+1}\) per definizione di \(\sigma\)-algebra; e se contiene \(\mathscr F_y\) per ogni \(y < x\), certamente contiene pure \(\bigcup_{y < x} \mathscr F_x.\) Allora per induzione transfinita, conterrà tutto \(\mathscr F.\)</p>
 </div>
 </div>
 
@@ -308,7 +363,7 @@ ma allora per <a href="https://it.wikipedia.org/wiki/Argomento_diagonale_di_Cant
 Ristretta alla \(\sigma\)-algebra di Lebesgue \(m_1^*\) è quindi una misura, detta semplicemente misura di Lebesgue e denotata con \(m_1\), da cui otteniamo lo spazio di misura di Lebesgue \( (\mathbb R, \mathcal L (\mathbb R), m_1) \).
 </p>
 <p>Un'importante proprietà della misura di Lebesgue è che è <b>completa</b>, ovvero ogni sottoinsieme di un insieme di misura nulla è misurabile e ha misura nulla.
-In effetti un altro modo di definire lo spazio di misura di Lebesgue è come il <b>completamento</b> dello spazio di misura di Borel, ovvero definire la \(\sigma\)-algebra di Lebesgue come la più piccola \(\sigma\)-algebra completa che contiene \(\mathscr B (\mathbb R) \).</p>
+In effetti un altro modo di definire lo spazio di misura di Lebesgue è come il <b>completamento</b> dello spazio di misura di Borel, ovvero aggiungendo alla \(\sigma\)-algebra \(\mathscr B (\mathbb R) \) tutti i sottoinsiemi degli insiemi di misura nulla e dando ad essi misura nulla.</p>
 </div>
 <div class='text drawer' id='drawer3'>
 
