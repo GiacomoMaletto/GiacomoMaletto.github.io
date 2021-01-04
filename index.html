@@ -206,7 +206,7 @@ h3 {
 <div id="content">
 <div id="intro">
 <h1><span class='c'>Le tribù di \(\mathbb R\)</span></h1>
-Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>, com'erano chiamate dal gruppo Bourbaki) di \(\mathbb R\) è una famiglia di sottoinsiemi di \(\mathbb R\) chiusa per complementi e unione numerabile, i cui elementi sono detti <span class='c'>misurabili</span>. Ne mettiamo tre a confronto. Se vale <span class="knob" id="knob12" onclick="clicked(12)">l'assioma della scelta</span> allora
+Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>, com'erano chiamate dal gruppo Bourbaki) di \(\mathbb R\) è una famiglia di sottoinsiemi di \(\mathbb R\) chiusa per complementi e unioni numerabili, i cui elementi sono detti <span class='c'>misurabili</span>. Ne mettiamo tre a confronto. Se vale <span class="knob" id="knob12" onclick="clicked(12)">l'assioma della scelta</span> allora
 <div class="drawer" id="drawer12">
 <p><span class="c">Assioma della scelta</span>: <i>data una qualunque famiglia 
   \(\mathfrak F = \{ X_i\}_{i \in I}\) di insiemi non vuoti, esiste una funzione di scelta
@@ -294,7 +294,7 @@ Insieme degli ordinali numerabili
 
 <div class="drawer" id="drawer14">
 <p><b>Teorema</b>: <i>esiste un insieme ben ordinato non numerabile \(\Omega\) tale che per ogni \(x \in \Omega, \ I_x \) è numerabile. </i></p>
-<p><i>Dimostrazione.</i> Sia \(X\) un insieme non numerabile. Per l'assioma del buon ordinamento, \(X\) è ben ordinato. Nel caso in cui valga la condizione cercata (rispetto al buon ordine) abbiamo finito. Altrimenti, sia \(S := \{ x \in X : I_x \) non è numerabile \(\}.\) Per il buon ordinamento di \(X,\) tale sottoinsieme ha un elemento minimo \(x_0,\) e possiamo prendere \(\Omega = I_{x_0}.\) <span style="float:right">\(\tiny\blacksquare\)</span></p>
+<p><i>Dimostrazione.</i> Sia \(X\) un insieme non numerabile. Per l'assioma del buon ordinamento, \(X\) è ben ordinato. Nel caso in cui valga la condizione cercata (rispetto al buon ordine) abbiamo finito. Altrimenti, sia \(S := \{ x \in X : I_x \) non è numerabile \(\}.\) Per il buon ordinamento di \(X,\) tale sottoinsieme ha un elemento minimo \(x_0,\) e possiamo prendere \(\Omega = I_{x_0}.\) \(\ \quad \tiny\blacksquare\)</p>
 Si dimostra che tale insieme è unico a meno di "isomorfismi di ordine".<br>
 Fissiamo un po' di terminologia (come se non l'avessimo fatto fino ad ora):
 <ul>
@@ -314,8 +314,8 @@ Induzione transfinita
 <div class="drawer" id="drawer15">
 <p>Dato un qualunque insieme ben ordinato \(X\) vale la seguente importante proprietà:</p>
 <p><span class="c">Principio di induzione transfinita</span>: <i> se \(A\) è un sottoinsieme di \(X\) tale che per ogni \(x \in X\) la condizione \(I_x \subseteq A \) implica che anche \(x \in A\), allora \(A = X.\)</i></p>
-<p><i>Dimostrazione.</i> Se \(X \neq A,\) sia \(x = \text{inf}(X \setminus A).\) Allora \(I_x \subseteq A\) ma \(x \not \in A,\) il che va contro le ipotesi.<span style="float:right">\(\tiny\blacksquare\)</span></p>
-<p>Ad esempio possiamo utilizzare l'induzione transfinita per provare ciò che avevamo affermato prima: ogni sottoinsieme numerabile \(A \in \Omega\) è limitato superiormente. Infatti se \(A\) è numerabile allora anche \(J := \bigcup_{x \in A}I_x\) è numerabile (sotto l'assioma della scelta, l'unione numerabile di insiemi numerabili è ancora numerabile; si veda la sezione relativa alla prima inclusione) e quindi non può corrispondere a tutto \(\Omega.\) Sia \(x_0 := \inf(\Omega \setminus J),\) allora \(x_0\) limita superiormente \(A\), perchè se ci fosse \(x \in A\) tale che \(x > x_0\) allora si avrebbe che \(x_0 \in I_x,\) e dunque \(x_0 \in J,\) il che va contro la definizione di \(x_0.\)</p>
+<p><i>Dimostrazione.</i> Se \(X \neq A,\) sia \(x = \text{inf}(X \setminus A).\) Allora \(I_x \subseteq A\) ma \(x \not \in A,\) il che va contro le ipotesi. \( \quad \tiny\blacksquare\)</p>
+<p>Ad esempio possiamo utilizzare l'induzione transfinita per provare ciò che avevamo affermato prima: ogni sottoinsieme numerabile \(A \subset \Omega\) è limitato superiormente. Infatti se \(A\) è numerabile allora anche \(J := \bigcup_{x \in A}I_x\) è numerabile (sotto l'assioma della scelta, l'unione numerabile di insiemi numerabili è ancora numerabile; si veda la sezione relativa alla prima inclusione) e quindi non può corrispondere a tutto \(\Omega.\) Sia \(x_0 := \inf(\Omega \setminus J),\) allora \(x_0\) limita superiormente \(A\), perchè se ci fosse \(x \in A\) tale che \(x > x_0\) allora si avrebbe che \(x_0 \in I_x,\) e dunque \(x_0 \in J,\) il che va contro la definizione di \(x_0.\)</p>
 <p>Quando viene applicata all'insieme \(\Omega,\) l'induzione transfinita può assumere una forma particolare: in tal caso ogni elemento dell'insieme o è \(1,\) o è l'ordinale precedente di qualche altro elemento o è un ordinale limite. Ma allora per dimostrare una proposizione basta dimostrare che vale nel "caso base" \(1,\) che se vale per \(x\) vale anche per \(x+1\) e che se vale per ogni \(y < x\) con \(x\) ordinale limite allora vale anche per \(x\) stesso.</p>
 </div>
 
@@ -367,8 +367,8 @@ Ma \(A\) è numerabile, dunque \(|\mathbb N \times A| \le |\mathbb N^2|.\) Infin
 <div class="formula"> se \(|A| \le \mathfrak c \ \) e \( \ |B| \le \mathfrak c\) allora \(|A \times B| \le \mathfrak c.\)</div></div>
 
 <div class="drawer" id="drawer20">
-Per il <a href="https://it.wikipedia.org/wiki/Teorema_di_Cantor" target="_blank">teorema di Cantor</a> si ha che \(|\mathcal P (\mathbb R)| = \mathfrak c\), quindi esiste una funzione iniettiva \(A \times B \to \mathcal P (\mathbb R) \times \mathcal P (\mathbb R).\) Mostriamo ora che esiste una biiezione \(\mathcal P (\mathbb R) \times \mathcal P (\mathbb R) \to \mathcal P (\mathbb R):\) questo implica l'esistenza di una iniezione \(A \times B \to \mathcal P (\mathbb R)\) e vale la tesi.
-Definiamo \(\phi, \psi : \mathbb N \to \mathbb N\) come \(\phi(n)=2n \ \) e \( \ \psi(n)=2n-1.\) Allora la mappa \(f : \mathcal P (\mathbb R) \times \mathcal P (\mathbb R) \to \mathcal P (\mathbb R)\) definita da \(f(X, Y) = \phi(X) \cup \psi(Y)\) è biiettiva.
+Per il <a href="https://it.wikipedia.org/wiki/Teorema_di_Cantor" target="_blank">teorema di Cantor</a> si ha che \(|\mathcal P (\mathbb N)| = \mathfrak c\), quindi esiste una funzione iniettiva \(A \times B \to \mathcal P (\mathbb N) \times \mathcal P (\mathbb N).\) Mostriamo ora che esiste una biiezione \(\mathcal P (\mathbb N) \times \mathcal P (\mathbb N) \to \mathcal P (\mathbb N):\) questo implica l'esistenza di una iniezione \(A \times B \to \mathcal P (\mathbb N)\) e vale la tesi.
+Definiamo \(\phi, \psi : \mathbb N \to \mathbb N\) come \(\phi(n)=2n \ \) e \( \ \psi(n)=2n-1.\) Allora la mappa \(f : \mathcal P (\mathbb N) \times \mathcal P (\mathbb N) \to \mathcal P (\mathbb N)\) definita da \(f(X, Y) = \phi(X) \cup \psi(Y)\) è biiettiva.
 </div>
 </p>
 
@@ -461,7 +461,7 @@ Prendiamo come esempio \(0.120\) (già espresso in base 3). La prima cifra decim
 \end{align*}</div>
 Ragioniamo per assurdo e supponiamo che esista \(k\in\mathbb{N}\) tale che \(a_k=1\) nell'espansione in base 3 di \(x.\) Allora \(0.a_1a_2...a_{k-1}\in [0,1] \setminus C_{k-1},\) ma  \(a_k=1\) dunque per la costruzione dei \(C_i\) si ha che \(x \in C_k\) il che implica che \(x \notin \mathcal{C}.\)<br>
 Questo dimostra il secondo verso della biimplicazione, vediamone adesso il primo verso.<br>
-Dalla osservazione fatta precedentemente sulla espansione di un numero in base 3 e dalla costruzione dei \(C_i,\) se \(a_n\in \{0,2\}\) per ogni \(n\in\mathbb{N}\) allora \(x\in\mathcal{C}.\)</p>
+Dalla osservazione fatta precedentemente sulla espansione di un numero in base 3 e dalla costruzione dei \(C_i,\) se \(a_n\in \{0,2\}\) per ogni \(n\in\mathbb{N}\) allora \(x\in\mathcal{C}.\)\(\ \quad \tiny\blacksquare\)</p>
 
 <p>Siamo dunque pronti per dimostrare il seguente importante risultato.</p>
 
@@ -481,7 +481,7 @@ Sia allora \(y=0.b_1b_2\ldots,\) dove
   2 & d_i^i=0.\\
   \end{cases}
 \end{align*}</div>
-Allora \(y\neq x^1\) siccome \(b_1 \neq d_1^1\ \) , \( \ y\neq x^2\) siccome \(b_2 \neq d_2^2\) e così via. Questo dunque ci dice che \(y \notin \mathcal{C},\) ma ciò contraddice il teorema 1, poichè \(b_i \in \{0,2\} \ \forall i.\) Dunque \(y \in \mathcal{C}\) e quindi l'insieme di Cantor è numerabile.</p>
+Allora \(y\neq x^1\) siccome \(b_1 \neq d_1^1\ \) , \( \ y\neq x^2\) siccome \(b_2 \neq d_2^2\) e così via. Questo dunque ci dice che \(y \notin \mathcal{C},\) ma ciò contraddice il teorema 1, poichè \(b_i \in \{0,2\} \ \forall i.\) Dunque \(y \in \mathcal{C}\) e quindi l'insieme di Cantor è numerabile.\(\ \quad \tiny\blacksquare\)</p>
 </div>
 
 <div class="knob" id="knob26" onclick='clicked(26)'>
@@ -634,7 +634,7 @@ I passaggi delineati ricalcano quelli visti all'esercitazione 4 del corso 2020/2
 </div>
 <div class='text drawer' id='drawer4'>
   <h3><span class='c'>\(\sigma\)-algebra delle parti di \(\mathbb R\)</span></h3>
-  Questa \(\sigma\)-algebra è piuttosto banale: vi appartengono <b>tutti</b> i sottoinsiemi di \(\mathbb R\). Non ci stupisce particolarmente che sia chiusa per complementi e unione numerabile.
+  Questa \(\sigma\)-algebra è piuttosto banale: vi appartengono <b>tutti</b> i sottoinsiemi di \(\mathbb R\). Non ci stupisce particolarmente che sia chiusa per complementi e unioni numerabili.
 </div>
 </div>
 </div>
