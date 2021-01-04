@@ -206,7 +206,7 @@ h3 {
 <div id="content">
 <div id="intro">
 <h1><span class='c'>Le tribù di \(\mathbb R\)</span></h1>
-Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>, com'erano chiamate dal gruppo Bourbaki) di \(\mathbb R\) è una famiglia di sottoinsiemi di \(\mathbb R\) chiusa per complementi e unioni numerabili, i cui elementi sono detti <span class='c'>misurabili</span>. Ne mettiamo tre a confronto. Se vale <span class="knob" id="knob12" onclick="clicked(12)">l'assioma della scelta</span> allora
+Una <span class='c'>\(\sigma\)-algebra </span> (o <span class="c">tribù</span>, com'erano chiamate dal gruppo Bourbaki) di \(\mathbb R\) è una famiglia di sottoinsiemi di \(\mathbb R\) chiusa sotto operazione di complementare e unioni numerabili, i cui elementi sono detti <span class='c'>misurabili</span>. Ne mettiamo tre a confronto. Se vale <span class="knob" id="knob12" onclick="clicked(12)">l'assioma della scelta</span> allora
 <div class="drawer" id="drawer12">
 <p><span class="c">Assioma della scelta</span>: <i>data una qualunque famiglia 
   \(\mathfrak F = \{ X_i\}_{i \in I}\) di insiemi non vuoti, esiste una funzione di scelta
@@ -241,7 +241,7 @@ tale che \(f(X_i)\in X_i\) per ogni \(i \in I;\)</i></p>
 
 <p> Un modo di definirla consiste nel prendere tutte le possibili \(\sigma\)-algebre che contengono gli aperti, e farne l'intersezione. Poichè vale che l'intersezione di \(\sigma\)-algebre è ancora una \(\sigma\)-algebra, la definizione è sensata.</p>
 <p>Questa è una definizione "dall'alto" nel senso che si parte da \(\sigma\)-algebre più ampie e se ne ottiene una più piccola tramite intersezione. Ma sarebbe comodo avere anche una definizione "dal basso": a partire dagli insiemi aperti costruire via via tutti gli altri elementi.
-Questa definizione avrebbe un aspetto simile:</p>
+Questa definizione avrebbe un aspetto simile a</p>
 <p>&laquo;\(\mathscr B (\mathbb R)\) è definito come la famiglia di sottoinsiemi di \(\mathbb R\) tale che
 <ul style="margin-top:-1em">
     <li>Se \(A\) è un aperto di \(\mathbb R\) allora \(A \in \mathscr B (\mathbb R)\).</li>
@@ -253,8 +253,8 @@ Questa definizione avrebbe un aspetto simile:</p>
 <ul style="margin-top:0em">
   <li>Per questioni che ci toccheranno in seguito, partiamo dall'insieme degli <b>intervalli</b> aperti di \(\mathbb R\) (compresi anche quelli illimitati e l'insieme vuoto). Denotiamo questo insieme \(\mathscr E.\)</li>
   <li>Ora ci aggiungiamo i complementari, definendo \(\mathscr E^c := \{I^c : I \in \mathscr E \}.\) Quello che abbiamo finora lo denotiamo con $$\mathscr F_1 := \mathscr E \cup \mathscr E^c.$$</li>
-  <li>A questo punto aggiungiamo l'insieme di ogni possibile unione numerabile degli elementi già ottenuti, ponendo \((\mathscr F_1)^{\sigma} := \left\{ \bigcup_{i=1}^{+\infty}E_i : E_i \in \mathscr F_1 \right\}.\) Prendiamo anche i complementari degli elementi di tale famiglia, ottenendo $$\mathscr F_2 := (\mathscr F_1)^{\sigma} \cup ((\mathscr F_1)^{\sigma})^c$$ (data una generica famiglia \(\mathscr F\), si definiscono \(\mathscr F^c\) e \(\mathscr F^{\sigma}\) in modo analogo a quanto visto prima). Questa è la famiglia formata da tutti gli insiemi aperti e tutti quelli chiusi.</li>
-  <li>Andiamo avanti. A partire da questa famiglia ne otteniamo di sempre più grandi tramite unioni numerabili e complementi: all'\(i\)-esimo passaggio abbiamo $$\mathscr F_{i+1} := (\mathscr F_i)^{\sigma} \cup ((\mathscr F_i)^{\sigma})^c.$$</li>
+  <li>A questo punto aggiungiamo l'insieme di ogni possibile unione numerabile degli elementi già ottenuti, ponendo \((\mathscr F_1)^{\sigma} := \left\{ \bigcup_{i=1}^{+\infty}E_i : E_i \in \mathscr F_1 \right\}.\) Prendiamo anche i complementari degli elementi di tale famiglia, ottenendo $$\mathscr F_2 := (\mathscr F_1)^{\sigma} \cup ((\mathscr F_1)^{\sigma})^c$$ (data una generica famiglia \(\mathscr F\), si definiscono \(\mathscr F^c\) e \(\mathscr F^{\sigma}\) in modo analogo a quanto visto prima). Questa famiglia contiene tutti gli insiemi aperti e tutti quelli chiusi.</li>
+  <li>Iterando questo procedimento otteniamo famiglie sempre più grandi: all'\(i\)-esimo passaggio abbiamo $$\mathscr F_{i+1} := (\mathscr F_i)^{\sigma} \cup ((\mathscr F_i)^{\sigma})^c.$$</li>
 </ul>
 <p>Quando ci fermiamo? Quante volte dobbiamo applicare tale procedimento per ottenere tutto \(\mathscr B(\mathbb R)\)? Forse basta ripetere tali passaggi un numero numerabile di volte: definiamo $$\mathscr B_? (\mathbb R) := \bigcup_{i \in \mathbb N} \mathscr F_i.$$ </p>
 <p>Purtroppo non basta: questa famiglia non è una \(\sigma\)-algebra, perchè non è chiusa per unione numerabile.<br>
@@ -301,7 +301,7 @@ Fissiamo un po' di terminologia (come se non l'avessimo fatto fino ad ora):
   <li>L'insieme \(\Omega\) appena trovato è l'<span class="c">insieme degli ordinali numerabili</span>.</li>
   <li>I suoi elementi sono giustamente detti <span class="c">ordinali numerabili</span>.</li>
   <li>Si definisce \(1 := \inf \Omega.\)</li>
-  <li>A partire da \(x \in \Omega\) si definisce \(x + 1 := \inf\{y \in \Omega : y > x\}\) (che esiste in virtù del buon ordinamento di \(\Omega\)) come l'<span class="c">ordinale successore</span> di x, mentre \(x\) è l'<span class="c">ordinale predecessore</span> di \(x+1.\)</li>
+  <li>A partire da \(x \in \Omega\) si definisce \(x + 1 := \inf\{y \in \Omega : y > x\}\) (che esiste in virtù del buon ordinamento di \(\Omega\)) come l'<span class="c">ordinale successore</span> di \(x\), mentre \(x\) è l'<span class="c">ordinale predecessore</span> di \(x+1.\)</li>
   <li>Non tutti gli elementi di \(\Omega\) hanno un ordinale predecessore (se no avremmo semplicemente \(\mathbb N\)...): quelli che non ce l'hanno sono detti <span class="c">ordinali limite</span>.</li>
 </ul>
 <p>È importante sapere che è possibile costruire \(\Omega\) anche <a href="https://en.wikipedia.org/wiki/First_uncountable_ordinal" target="_blank">senza</a> fare uso dell'assioma del buon ordinamento, tramite i numeri di Hartogs.</p>
@@ -327,16 +327,16 @@ $$\mathscr B (\mathbb R) = \bigcup_{x \in \Omega}\mathscr F_x$$
 <p>Aggiorniamo la definizione degli \(\mathscr F_x\) per \(x \in \Omega\):
 <ul>
 <li>\(\mathscr F_1 := \mathscr E \cup \mathscr E^c.\)</li>
-<li>Se \(x\) ha un ordinale predecessore \(y\) allora $$\mathscr F_x := ( \mathscr F_y)^{\sigma} \cup (\mathscr F_y)^{\sigma})^c. $$</li>
+<li>Se \(x\) ha un ordinale predecessore \(y\) allora $$\mathscr F_x := ( \mathscr F_y)^{\sigma} \cup ((\mathscr F_y)^{\sigma})^c. $$</li>
 <li>Se \(x\) è un ordinale limite allora $$ \mathscr F_x := \bigcup_{y < x} \mathscr F_y. $$</li>
 Vogliamo mostrare che \(\mathscr F := \bigcup_{x \in \Omega} \mathscr F_x\) è la più piccola \(\sigma\)-algebra contenente gli aperti.
 </ul></p>
-<p>Prima di tutto osserviamo che \(\mathscr F\) è una \(\sigma\)-algebra: \(\mathbb R \in \mathscr F_1\), se \(E \in \mathscr F_x\) allora \(E^c \in (\mathscr F_x)^c \subseteq \mathscr F_{x+1}\), e se \(E_i \in \mathscr F\) è una successione numerabile di elementi, allora per ogni \(i\) esiste \(x_i\) tale che \(E_i \in \mathscr F_{x_i}\), ma \(\{ x_i \}\) è un insieme numerabile in \(\Omega\) che quindi è limitato superiormente da un qualche \(y\): ma allora per ogni \(i\) si ha che \(E_i \in \mathscr F_y\) e quindi \(\bigcup_{i=1}^{+\infty} E_i \in (\mathscr F_y)^{\sigma} \subseteq \mathscr F_{y+1}.\)</p>
+<p>Prima di tutto osserviamo che \(\mathscr F\) è una \(\sigma\)-algebra: \(\mathbb R \in \mathscr F_1\), se \(E \in \mathscr F_x\) allora \(E^c \in (\mathscr F_x)^c \subseteq \mathscr F_{x+1}\), e se \(E_i \in \mathscr F\) è una successione numerabile di elementi, allora per ogni \(i\) esiste \(x_i\) tale che \(E_i \in \mathscr F_{x_i}\), ma \(\{ x_i \}\) è un insieme numerabile in \(\Omega\) che quindi è limitato superiormente da un qualche \(y\): allora per ogni \(i\) si ha che \(E_i \in \mathscr F_y\) e quindi \(\bigcup_{i=1}^{+\infty} E_i \in (\mathscr F_y)^{\sigma} \subseteq \mathscr F_{y+1}.\)</p>
 <p>Resta solo da dimostrare che \(\mathscr F\) è la più piccola \(\sigma\)-algebra contenente gli aperti. Certamente gli aperti sono elementi di \(\mathscr F_2.\) Invece, se una \(\sigma\)-algebra contiene gli aperti allora contiene \(\mathscr F_1;\) se contiene un qualche \(\mathscr F_x\) allora contiene \(\mathscr F_{x+1}\) per definizione di \(\sigma\)-algebra; e se contiene \(\mathscr F_y\) per ogni \(y < x\), certamente contiene pure \(\bigcup_{y < x} \mathscr F_x.\) Allora per induzione transfinita, conterrà tutto \(\mathscr F.\)</p>
 </div>
 <span class="knob fonte" id="knob21" onclick="clicked(21)">Fonti</span>
 <div class="drawer" id="drawer21">
-Questa trattazione dei boreliani è basata sul Folland, <i>Real Analysis: Modern Techniques and Their Applications</i>, assieme a <a href="https://math.dartmouth.edu/~m103f17/borel-sets-soln.pdf" target="_blank">questa pagina</a>.
+Questa trattazione dei boreliani è basata sul Folland, <i>Real Analysis: Modern Techniques and Their Applications</i>, assieme a <a href="https://math.dartmouth.edu/~m103f17/borel-sets-soln.pdf" target="_blank">https://math.dartmouth.edu/~m103f17/borel-sets-soln.pdf</a>.
 </div>
 <br>
 </div>
@@ -394,7 +394,7 @@ Cosa ci garantisce che \(\mathbb R \setminus f(\bigcup_{y < x}y + \mathbb Z)\) n
 
 <div class="drawer" id="drawer19">
   Lo mostriamo per induzione transfinita.
-  <p>Innanzitutto \(\mathscr F_1\) è l'unione degli intervalli aperti e i loro complementi; non è difficile mostrare che l'insieme degli intervalli aperti ha cardinalità \(\mathfrak c\) (è utile usare il fatto che \(|\mathbb R^2|=\mathfrak c\) per quanto detto prima sulla cardinalità del prodotto) e ovviamente quella dei loro complementi anche; quindi \(|\mathscr F_1| = \mathfrak c\) (è per questo che abbiamo scelto come \(\mathscr E\) gli intervalli aperti anzichè gli aperti).</p>
+  <p>Innanzitutto \(\mathscr F_1\) è l'unione degli intervalli aperti e i loro complementari; non è difficile mostrare che l'insieme degli intervalli aperti ha cardinalità \(\mathfrak c\) (è utile usare il fatto che \(|\mathbb R^2|=\mathfrak c\) per quanto detto prima sulla cardinalità del prodotto) e ovviamente quella dei loro complementari anche; quindi \(|\mathscr F_1| = \mathfrak c\) (è per questo che abbiamo scelto come \(\mathscr E\) gli intervalli aperti anzichè gli aperti).</p>
   <p>Se \(\mathscr F_x\) ha cardinalità \(\mathfrak c\) allora lo stesso vale per \((\mathscr F_x)^c\) (ovvio) ma anche per \((\mathscr F_x)^{\sigma}.\) Questo perchè dato un qualunque elemento \(E \in (\mathscr F_x)^{\sigma}\) possiamo scegliere una sua espressione del tipo \(\bigcup_{1=1}^{+\infty}E_i\) con \(E_i \in \mathscr F_x\); allora ad \(E\) associamo la successione di numeri reali \((g(E_1), g(E_2), \dots )\) dove \(g\) è una biiezione tra \(\mathscr F_x\) e \(\mathbb R\). Si dimostra che l'insieme delle successione di numeri reali <a href="https://math.stackexchange.com/questions/413836/cardinality-of-all-real-sequences" target="_blank">ha la stessa cardinalità</a> dei numeri reali, quindi \(|(\mathscr F_x)^{\sigma}| = \mathfrak c.\)<br>
   Da ciò si deduce che se \(|\mathscr F_x| = \mathfrak c \ \) ma allora anche <div class="formula">$$|\mathscr F_{x+1}| = |(\mathscr F_x)^{\sigma} \cup ((\mathscr F_x)^{\sigma})^c| = \mathfrak c.$$</div></p>
   <p>Infine se \(x\) è un ordinale limite e per ogni \(y < x\) vale che \(|\mathscr F_y| \le \mathfrak c\) allora \(\mathscr F_x = \bigcup_{y < x} \mathscr F_y\) è un'unione numerabile di insiemi con cardinalità \(\mathfrak c,\) e perciò ha anch'esso tale cardinalità.</p>
@@ -507,7 +507,13 @@ ma allora per il <a href="https://it.wikipedia.org/wiki/Teorema_di_Cantor" targe
 
 <span class="knob fonte" id="knob22" onclick='clicked(22)'>Fonti</span>
 <div class="drawer" id="drawer22">
-La dimostrazione della cardinalità dei boreliani è basata sul Folland, <i>Real Analysis: Modern Techniques and Their Applications</i>, assieme a <a href="https://math.dartmouth.edu/~m103f17/borel-sets-soln.pdf" target="_blank">questa pagina</a>.</div><br>
+La dimostrazione della cardinalità dei boreliani è basata sul Folland, <i>Real Analysis: Modern Techniques and Their Applications</i>, assieme a <a href="https://math.dartmouth.edu/~m103f17/borel-sets-soln.pdf" target="_blank">https://math.dartmouth.edu/~m103f17/borel-sets-soln.pdf</a>.<br>
+Il contenuto relativo all'insieme di Cantor è tratto da 
+<ul>
+<li> <a href="http://www.math.utah.edu/~erin/32103/Cantor.pdf"  target="_blank">http://www.math.utah.edu/~erin/32103/Cantor.pdf</a> </li>
+<li> <a href="https://faculty.etsu.edu/gardnerr/5210/notes/Cardinality-of-M.pdf"  target="_blank">https://faculty.etsu.edu/gardnerr/5210/notes/Cardinality-of-M.pdf</a></li>
+<li> <a href="https://www.maths.tcd.ie/~levene/221/pdf/cantor.pdf" target="_blank">https://www.maths.tcd.ie/~levene/221/pdf/cantor.pdf</a>.</li>
+</ul></div><br>
 
 </div>
 <div class='text drawer' id='drawer2'>
@@ -573,9 +579,9 @@ Sia \(\{q_n\}\) una numerazione degli elementi di \(\mathbb{Q} \cap [-1,1]\) e d
   \end{align*}</div>
   da cui segue che
   <div class="formula">\begin{align*}
-      y+q_n=z+q_m \implies y-z=q_m-q_n \in \mathbb{Q} \implies y=z.\\
+      y+q_n=z+q_m \implies y-z=q_m-q_n \in \mathbb{Q}.\\
   \end{align*}</div>
-  Da ciò deduciamo che \( q_n=q_m \) ed infine \(n=m\) che è assurdo, poiché avevamo supposto \(n\neq m\).</p>
+  Questo significa che \(y \) e \( z\) appartengono alla stessa classe di equivalenza della relazione \(\rho.\) Ma \(y \) e \( z\) appartengono all'insieme di Vitali, costruito scegliendo un solo rappresentante per ogni classe di equivalenza, quindi l'unica possibilità è che \(y = z.\) Da ciò deduciamo che anche \( q_n=q_m \) ed infine \(n=m\) il che è assurdo, poiché avevamo supposto \(n\neq m\).</p>
 </div>
 
 <div class="knob" id="knob6" onclick="clicked(6)">
@@ -622,19 +628,23 @@ ed avrebbero la stessa misura di \(V\) per quanto appena visto, ma ciò è in co
 <p>Potrebbe sembrare piuttosto innocuo, e in effetti la maggior parte dei matematici implicitamente accettano tale assioma senza problemi. Ma assumerlo porta anche a conseguenze inaspettate (come il famoso paradosso di Banach-Tarski, il quale tra l'altro sfrutta proprio l'esistenza di insiemi non Lebesgue-misurabili) perciò - dal punto di vista logico - quando se ne fa uso è sempre bene sottolinearlo.</p>
 
 <p>Ma allora anzichè l'insieme di Vitali, non potremmo trovare un altro esempio che non preveda l'assioma della scelta?
-In realtà no: è stato dimostrare che ogni sottoinsieme non misurabile secondo Lebesgue si può costruire solo facendo uso dell'assioma.<br>
+In realtà no: è stato dimostrato che ogni sottoinsieme non misurabile secondo Lebesgue si può costruire solo facendo uso dell'assioma.<br>
 In effetti nel 1970 <a href="https://www.researchgate.net/publication/239065757_A_Model_of_Set_Theory_in_Which_Every_Set_of_Reals_is_Lebesgue_Measurable" target="_blank"> in un paper </a> Robert Solovay costruì un modello della teoria degli insiemi di Zermelo-Fraenkel senza assumere l'assioma della scelta dove tutti gli insiemi di numeri reali sono misurabili secondo Lebesgue.</p>
 </div>
 
 <span class="knob fonte" id="knob23" onclick='clicked(23)'>Fonti</span>
 <div class="drawer" id="drawer23">
-I passaggi delineati ricalcano quelli visti all'esercitazione 4 del corso 2020/2021 di Analisi 3 dell'Università di Torino.
+I passaggi delineati ricalcano quelli visti all'esercitazione 4 del corso 2020/2021 di Analisi 3 dell'Università di Torino. Sono state utilizzate anche le seguenti pagine:
+<ul>
+<li> <a href="http://people.dm.unipi.it/acquistp/teomis.pdf" target="_blank">http://people.dm.unipi.it/acquistp/teomis.pdf</a></li>
+<li> <a href="https://en.wikipedia.org/wiki/Vitali_set" target="_blank">https://en.wikipedia.org/wiki/Vitali_set</a></li>
+</ul>
 </div>
 <br>
 </div>
 <div class='text drawer' id='drawer4'>
   <h3><span class='c'>\(\sigma\)-algebra delle parti di \(\mathbb R\)</span></h3>
-  Questa \(\sigma\)-algebra è piuttosto banale: vi appartengono <b>tutti</b> i sottoinsiemi di \(\mathbb R\). Non ci stupisce particolarmente che sia chiusa per complementi e unioni numerabili.
+  Questa \(\sigma\)-algebra è piuttosto banale: vi appartengono <b>tutti</b> i sottoinsiemi di \(\mathbb R\). Non ci stupisce particolarmente che sia chiusa sotto operazione di complementare e unioni numerabili.
 </div>
 </div>
 </div>
