@@ -191,6 +191,11 @@ h3 {
   font-size: 0.8rem;
 }
 
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
 </style>
 
 <title>Le tribù di R</title>
@@ -400,7 +405,102 @@ Da questi fatti segue la tesi: \(|\Omega| \le \mathfrak c \ \) e \(\ |\mathscr F
 <div class="knob" id='knob11' onclick='clicked(11)'>
 \(\mathcal L (\mathbb R)\) ha la cardinalità di \(\mathcal P(\mathbb R\))
 </div>
-<div class="drawer" id="drawer11">b</div>
+<div class="drawer" id="drawer11">
+
+<p>Usiamo la stessa notazione precedentemente definita, con l'aggiunta che \(2^{\mathfrak c} := |\mathcal P (\mathbb R)|.\)<br>
+Per dimostrare che \(|\mathcal L (\mathbb R)| = 2^{\mathfrak c}\) costruiamo l'insieme di Cantor e ne dimostriamo qualche proprietà.</p>
+
+<div class="knob" id="knob24" onclick='clicked(24)'>
+Costruzione dell'insieme di Cantor
+</div>
+<div class="drawer" id="drawer24">
+<p>Un esempio rilevante in teoria della misura è l'insieme di Cantor. Esso rappresenta un insieme non numerabile che risulta essere di misura nulla. La costruzione di tale insieme avviene attraverso un numero infinito di passi che eliminano via via un numero sempre più grande di segmenti dall'intervallo \([0,1]\). Iniziamo con lo scrivere i segmenti da rimuovere ad ogni passo; in ogni passaggio verrà diviso il segmento considerato in 3 parti e verrà rimosso il segmento "di mezzo". Ad esempio per il primo passo dividiamo il segmento \([0,1]\) in \(\left[ 0,\frac13 \right],\left( \frac13,\frac23 \right), \left[ \frac23,1 \right] \) e rimuoviamo il segmento \( \left( \frac13,\frac23 \right) \).</p>
+
+<img src="passo1.jpeg" alt="Passo 1" class="responsive">
+
+<p>Per il secondo passo prendiamo i segmenti rimasti, ovvero \(\left[ 0,\frac13 \right]\) e \(\left[ \frac23,1 \right] \) e applichiamo lo stesso algoritmo</p>
+
+<img src="passo2.jpeg" alt="Passo 2" class="responsive">
+
+<p>e così via per i restanti segmenti all'infinito. Per sapere quali segmenti è necessario togliere al passo \(k\) osserviamo che in generale ad ogni passo si tolgono sempre segmenti che sono simmetrici rispetto al centro e distano di \(\frac23\), quindi ci basta trovare una formula per i segmenti prima del centro di \([0,1]\) e per gli altri effettuare la traslazione. Osserviamo che i segmenti cercati sono semplicemente i segmenti ottenuti prima rimpiccioliti di \(\frac13\), quindi arriviamo alla formula
+<div class="formula">\begin{equation*}
+\left(a_k^i,b_k^i\right)=\left(\frac{a_{k-1}^i}3,\frac{b_{k-1}^i}3\right)\ i=1\dots 2^{k-2}
+\end{equation*}</div>
+(per \(k=1\) c'è solo un segmento) e per i restanti a destra del centro
+<div class="formula">\begin{equation*}
+\left(a_k^{2^{k-2}+i},b_k^{2^{k-2}+i}\right)=\left(\frac23+\frac{a_{k}^i}3,\frac23+\frac{b_{k}^i}3\right).
+\end{equation*}</div>
+Con questa formula possiamo quindi scrivere le quantita \(C_k\) da togliere ad ogni passo:
+<div class="formula">\begin{equation*}
+C_1=\left(\frac{1}{3}, \frac{2}{3}\right)
+\end{equation*}</div>
+<div class="formula">\begin{equation*}
+C_2=\left(\frac{1}{9}, \frac{2}{9}\right) \cup\left(\frac{7}{9}, \frac{8}{9}\right)
+\end{equation*}</div>
+<div class="formula">\begin{equation*}
+C_3=\left(\frac{1}{27}, \frac{2}{27}\right) \cup\left(\frac{7}{27}, \frac{8}{27}\right) \cup\left(\frac{19}{27}, \frac{20}{27}\right) \cup\left(\frac{25}{27}, \frac{26}{27}\right)
+\end{equation*}</div>
+<div class="formula">\begin{equation*}
+C_{4}=\left(\frac{1}{81}, \frac{2}{81}\right) \cup\left(\frac{7}{81}, \frac{8}{81}\right) \cup\left(\frac{19}{81}, \frac{20}{81}\right) \cup\left(\frac{25}{81}, \frac{26}{81}\right) \cup\left(\frac{55}{81}, \frac{56}{81}\right) \cup\left(\frac{61}{81}, \frac{62}{81}\right) \cup\left(\frac{73}{81}, \frac{74}{81}\right) \cup\left(\frac{79}{81}, \frac{80}{81}\right)
+\end{equation*}</div>
+Si vede che al passo \(C_n\) si tolgono \(2^{n-1}\) intervalli complessivamente di lunghezza \(\frac{2^{n-1}}{3^n}\).<br>
+Osserviamo che per ogni \(k\in \mathbb{N},\) \(C_k\) è l'unione di \(2^{k-1}\) intervalli chiusi ognuno di lunghezza \(3^{-k}.\)<br>
+L'insieme $$\mathcal{C} := [0,1] \setminus \bigcup_{i=1}^{+\infty}C_i$$ ottenuto rimuovendo i \(C_i\) è detto insieme di Cantor.</p>
+</div>
+
+<div class="knob" id="knob25" onclick='clicked(25)'>
+Cardinalità dell'insieme di Cantor
+</div>
+<div class="drawer" id="drawer25">
+<p><b>Teorema 1</b>: <i>sia \(x=0.a_1a_2 \dots \) l'espansione in base 3 di un numero \(x\in[0,1].\) Allora \(x\in\mathcal{C}\) se e solo se \(a_n \in \{0,2\}\) per ogni \(n \in \mathbb{N}.\)</i></p>
+<p><i>Dimostrazione.</i> In questa dimostrazione faremo uso della conversione di un numero in una base alternativa; per una discussione più approfondita si consiglia di consultare <a href="https://www.tutorialspoint.com/computer_logical_organization/number_system_conversion.htm" target="_blank">questo sito</a>. Per quello che servirà ai nostri scopi è utile sapere che nella conversione in base 3 la posizione decimale indica in quale "terzo" il numero è contenuto.<br>
+Prendiamo come esempio \(0.120\) (già espresso in base 3). La prima cifra decimale ci dice che è contenuto nel primo terzo di \([0,1]\), ovvero \(\left[\frac{1}{3},\frac{2}{3}\right];\) la seconda cifra decimale ci dice che sta nel terzo terzo di \(\left[\frac{1}{3},\frac{2}{3}\right],\) ovvero \(\left[\frac{5}{9},\frac{6}{9}\right]\) e infine l'ultima cifra decimale ci dice che è contenuto nel primo terzo di \(\left[\frac{5}{9},\frac{6}{9}\right],\) ovvero \(\left[\frac{15}{27},\frac{16}{27}\right].\)</p> 
+<p>Detto ciò, sia \(x\in[0,1]\) e sia \(0.a_1a_2...\) la sua espansione in base 3, ovvero
+<div class="formula">\begin{align*}
+  x=0.a_1a_2...=\sum_{n=1}^{+\infty}a_n3^{-n}.
+\end{align*}</div>
+Ragioniamo per assurdo e supponiamo che esista \(k\in\mathbb{N}\) tale che \(a_k=1\) nell'espansione in base 3 di \(x.\) Allora \(0.a_1a_2...a_{k-1}\in [0,1] \setminus C_{k-1},\) ma  \(a_k=1\) dunque per la costruzione dei \(C_i\) si ha che \(x \in C_k\) il che implica che \(x \notin \mathcal{C}.\)<br>
+Questo dimostra il secondo verso della biimplicazione, vediamone adesso il primo verso.<br>
+Dalla osservazione fatta precedentemente sulla espansione di un numero in base 3 e dalla costruzione dei \(C_i,\) se \(a_n\in \{0,2\}\) per ogni \(n\in\mathbb{N}\) allora \(x\in\mathcal{C}.\)</p>
+
+<p>Siamo dunque pronti per dimostrare il seguente importante risultato.</p>
+
+<p><b>Teorema 2</b>: <i>l'insieme di Cantor \(\mathcal{C}\) non è numerabile, più precisamente \(|\mathcal{C}|=\mathfrak{c}.\)</i></p>
+<p><b>Dimostrazione. </b> Per la dimostrazione utilizziamo un metodo noto come diagonale di Cantor (che tra l'altro è lo stesso utilizzato nel teorema di Cantor già citato).<br>
+Supponiamo che l'insieme di Cantor sia numerabile e dunque \(\mathcal{C}=\{x^1,x^2,x^3,...\}\) (dove quelli in alto non sono esponenti ma indici). Dal teorema precedente, possiamo scrivere l'espansione di ogni \(x_i \in \mathcal{C}\) come \(x^i=0.d_1^id_2^i..., \ \) con \( \ d_j^i \in \{0,2\} \ \forall i,j.\)</p>
+<p>Allora ogni elemento di \(\mathcal{C}\) compare nella lista:
+<div class="formula">\begin{align*}
+  x^1=0.d_1^1d_2^1...\\
+  x^i=0.d_1^2d_2^2...\\[-12pt] &\\ \vdots \\
+  x^k=0.d_1^kd_2^k...
+\end{align*}</div>
+Sia allora \(y=0.b_1b_2\ldots,\) dove 
+<div class="formula">\begin{align*}
+  b_i=\begin{cases}
+  0 & d_i^i=2\\
+  2 & d_i^i=0.\\
+  \end{cases}
+\end{align*}</div>
+Allora \(y\neq x^1\) siccome \(b_1 \neq d_1^1\ \) , \( \ y\neq x^2\) siccome \(b_2 \neq d_2^2\) e così via. Questo dunque ci dice che \(y \notin \mathcal{C},\) ma ciò contraddice il teorema 1, poichè \(b_i \in \{0,2\} \ \forall i.\) Dunque \(y \in \mathcal{C}\) e quindi l'insieme di Cantor è numerabile.</p>
+</div>
+
+<div class="knob" id="knob26" onclick='clicked(26)'>
+Misurabilità dell'insieme di Cantor
+</div>
+<div class="drawer" id="drawer26">
+<p>L'insieme di Cantor è il complementare di una unione di aperti, dunque è chiuso. Ciò significa che è misurabile (è un boreliano) perciò possiamo calcolarne la misura:
+<div class="formula">\begin{align*}
+m(C) &= m([0,1])-m(\cup_{k=1}^{\infty}C_k) \\ &= 
+1-\sum_{k=1}^{\infty}m(C_k)=1-\sum_{k=1}^{\infty} \frac{2^{k-1}}{3^k} \\ &= 
+1-\frac 13 \sum_{k=0}^{\infty} \left(\frac23\right)^{k} = 1-\frac{\frac13}{1-\frac23}=0
+\end{align*}</div>
+in quanto tutti i \(C_k\) sono disgiunti. Abbiamo quindi dimostrato che la misura dell'insieme di Cantor è nulla.</p>
+</div>
+
+<p>Si ha quindi che \(|\mathcal{C}|=\mathfrak{c}\) e dunque il suo insieme delle parti \(\mathcal{P}(\mathcal{C})\) ha cardinalità \(2^\mathfrak{c}.\) Inoltre \(\mathcal{C}\) è misurabile secondo Lebesgue ed ha misura nulla.</p>
+<p>Osserviamo che, siccome la misura di Lebesgue è completa, ogni sottoinsieme dell'insieme di Cantor è misurabile. Otteniamo allora che \(\mathcal{P}(\mathcal{C}) \subset \mathcal{L}(\mathbb{R}) \subset \mathcal{P}(\mathbb{R})\) e dunque \(|\mathcal{L}(\mathbb{R})|=2^\mathfrak{c}.\)</p>
+
+</div>
 
 <br>
 ma allora per il <a href="https://it.wikipedia.org/wiki/Teorema_di_Cantor" target="_blank">teorema di Cantor</a>, non esiste una corrispondenza biunivoca tra \(\mathscr B (\mathbb R)\) e \(\mathcal L (\mathbb R)\), e certamente non possono essere uguali.</p>
