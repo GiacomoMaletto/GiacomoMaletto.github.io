@@ -305,6 +305,9 @@ Fissiamo un po' di terminologia (come se non l'avessimo fatto fino ad ora):
   <li>Non tutti gli elementi di \(\Omega\) hanno un ordinale predecessore (se no avremmo semplicemente \(\mathbb N\)...): quelli che non ce l'hanno sono detti <span class="c">ordinali limite</span>.</li>
 </ul>
 <p>È importante sapere che è possibile costruire \(\Omega\) anche <a href="https://en.wikipedia.org/wiki/First_uncountable_ordinal" target="_blank">senza</a> fare uso dell'assioma del buon ordinamento, tramite i numeri di Hartogs.</p>
+<p>Dimostriamo subito ciò che avevamo affermato prima.</p>
+<p><b>Teorema: </b> <i>ogni sottoinsieme numerabile \(A \subset \Omega\) è limitato superiormente.</i></p>
+<p><i>Dimostrazione.</i> Se \(A\) è numerabile allora anche \(J := \bigcup_{x \in A}I_x\) è numerabile (sotto l'assioma della scelta, l'unione numerabile di insiemi numerabili è ancora numerabile; si veda la sezione relativa alla prima inclusione) e quindi non può corrispondere a tutto \(\Omega.\) Sia \(x_0 := \inf(\Omega \setminus J),\) allora \(x_0\) limita superiormente \(A\), perchè se ci fosse \(x \in A\) tale che \(x > x_0\) allora si avrebbe che \(x_0 \in I_x,\) e dunque \(x_0 \in J,\) il che va contro la definizione di \(x_0.\)\(\ \quad \tiny\blacksquare\)</p>
 </div>
 
 <div class="knob" id="knob15" onclick="clicked(15)">
@@ -315,7 +318,7 @@ Induzione transfinita
 <p>Dato un qualunque insieme ben ordinato \(X\) vale la seguente importante proprietà:</p>
 <p><span class="c">Principio di induzione transfinita</span>: <i> se \(A\) è un sottoinsieme di \(X\) tale che per ogni \(x \in X\) la condizione \(I_x \subseteq A \) implica che anche \(x \in A\), allora \(A = X.\)</i></p>
 <p><i>Dimostrazione.</i> Se \(X \neq A,\) sia \(x = \text{inf}(X \setminus A).\) Allora \(I_x \subseteq A\) ma \(x \not \in A,\) il che va contro le ipotesi. \( \quad \tiny\blacksquare\)</p>
-<p>Ad esempio possiamo utilizzare l'induzione transfinita per provare ciò che avevamo affermato prima: ogni sottoinsieme numerabile \(A \subset \Omega\) è limitato superiormente. Infatti se \(A\) è numerabile allora anche \(J := \bigcup_{x \in A}I_x\) è numerabile (sotto l'assioma della scelta, l'unione numerabile di insiemi numerabili è ancora numerabile; si veda la sezione relativa alla prima inclusione) e quindi non può corrispondere a tutto \(\Omega.\) Sia \(x_0 := \inf(\Omega \setminus J),\) allora \(x_0\) limita superiormente \(A\), perchè se ci fosse \(x \in A\) tale che \(x > x_0\) allora si avrebbe che \(x_0 \in I_x,\) e dunque \(x_0 \in J,\) il che va contro la definizione di \(x_0.\)</p>
+
 <p>Quando viene applicata all'insieme \(\Omega,\) l'induzione transfinita può assumere una forma particolare: in tal caso ogni elemento dell'insieme o è \(1,\) o è l'ordinale precedente di qualche altro elemento o è un ordinale limite. Ma allora per dimostrare una proposizione basta dimostrare che vale nel "caso base" \(1,\) che se vale per \(x\) vale anche per \(x+1\) e che se vale per ogni \(y < x\) con \(x\) ordinale limite allora vale anche per \(x\) stesso.</p>
 </div>
 
