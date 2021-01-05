@@ -281,7 +281,7 @@ Assioma del buon ordinamento
 
 <p>In seguito utilizzeremo il simbolo \(\le\) per denotare un ordine totale e scriveremo che \(x < y\) se \(x \le y\) e \(x \neq y\).<br>
 Diciamo che \(x \in X\) è <span class="c">l'elemento minimo</span> di \(X\) se \(\forall y \in X, y \ \le \ x \) implica che \( y = x.\)<br>
-Dato \(x \in X\) si definisce il <span class="c">segmento iniziale</span> di \(x\) l'insieme \(I_x := \{ y \in \Omega : y < x\}.\)</p>
+Dato \(x \in X\) si definisce il <span class="c">segmento iniziale</span> di \(x\) l'insieme \(I_x := \{ y \in X : y < x\}.\)</p>
 
 <p>La relazione \(\le\) si dice <span class="c">buon ordine</span> se oltre ad essere un ordine totale vale una condizione aggiuntiva: ogni sottoinsieme non vuoto di \(X\), preso a sè stante, ha un elemento minimo. Se un insieme \(X\) ammette un buon ordine allora si dice che \(X\) è <span class="c">ben ordinato</span>.<br>
 Ad esempio \(\mathbb N\) è ben ordinato tramite la familiare relazione \(\le\): ogni sottoinsieme \(S \neq \emptyset\) di \(\mathbb N\) ha infatti un elemento minimo, un \(n\) tale che \(n \le m\) per ogni \(m \in S\).</p>
@@ -389,7 +389,7 @@ Definiamo \(\phi, \psi : \mathbb N \to \mathbb N\) come \(\phi(n)=2n \ \) e \( \
 Costruiamo una funzione iniettiva \(f : \Omega \to \mathbb R\) per ricorsione transfinita.<br>
 Poniamo \(f(1) := 1,\) \(f(x+1):=f(x)+1.\) Nel caso che \(x\) sia l'ordinale successore di un qualche \(y\), tale formula ne definisce il valore tramite \(y\). Se invece \(x\) è un ordinale limite dove mandiamo \(x\)? Deve essere un valore che non "crei problemi" riguardo all'iniettività di \(f.\)<br>
 Ovviamente \(f(x)\) non può essere uguale a un qualche \(f(y)\) con \(y \in I_x.\) Ma abbiamo che \(\mathbb R \setminus f(I_x)\) non è mai vuoto perchè per definizione di \(\Omega,\) \(I_x\) è numerabile (mentre \(\mathbb R\) è più che numerabile, per il teorema di Cantor).<br>
-Possiamo dire allora "mandiamo \(x\) in un punto qualsiasi di \(\mathbb R \setminus f(I_x)\)"? No, perchè ciò non garantisce l'iniettività di \(f:\) potrebbe capitare che magari sia posto \(f(x)=0,\) ma allora si avrebbe che \(f(x+1)=f(x)+1=1=f(1), \) violando l'iniettività. <br>
+Possiamo dire allora "mandiamo \(x\) in un punto qualsiasi di \(\mathbb R \setminus f(I_x)\)"? No, perchè ciò non garantisce l'iniettività di \(f:\) potrebbe capitare che magari sia posto ad esempio \(f(x)=0,\) ma allora si avrebbe che \(f(x+1)=f(x)+1=1=f(1), \) violando l'iniettività. <br>
 Per evitare questo problema diciamo invece che mandiamo \(x\) in un punto qualsiasi di \(\mathbb R \setminus f(\bigcup_{y < x}y + \mathbb Z),\) ovvero anzichè escludere i singoli punti \(f(y)\) escludiamo anche tutti i valori della forma \(f(y)+k, k \in \mathbb Z.\)<br>
 Cosa ci garantisce che \(\mathbb R \setminus f(\bigcup_{y < x}y + \mathbb Z)\) non sia vuoto? L'unione numerabile di insiemi numerabili è numerabile: abbiamo usato l'assioma della scelta.
 </div>
@@ -402,7 +402,7 @@ Cosa ci garantisce che \(\mathbb R \setminus f(\bigcup_{y < x}y + \mathbb Z)\) n
   Lo mostriamo per induzione transfinita.
   <p>Innanzitutto \(\mathscr F_1\) è l'unione degli intervalli aperti e i loro complementari; non è difficile mostrare che l'insieme degli intervalli aperti ha cardinalità \(\mathfrak c\) (è utile usare il fatto che \(|\mathbb R^2|=\mathfrak c\) per quanto detto prima sulla cardinalità del prodotto) e ovviamente quella dei loro complementari anche; quindi \(|\mathscr F_1| = \mathfrak c\) (è per questo che abbiamo scelto come \(\mathscr E\) gli intervalli aperti anzichè gli aperti).</p>
   <p>Se \(\mathscr F_x\) ha cardinalità \(\mathfrak c\) allora lo stesso vale per \((\mathscr F_x)^c\) (ovvio) ma anche per \((\mathscr F_x)^{\sigma}.\) Questo perchè dato un qualunque elemento \(E \in (\mathscr F_x)^{\sigma}\) possiamo scegliere una sua espressione del tipo \(\bigcup_{1=1}^{+\infty}E_i\) con \(E_i \in \mathscr F_x\); allora ad \(E\) associamo la successione di numeri reali \((g(E_1), g(E_2), \dots )\) dove \(g\) è una biiezione tra \(\mathscr F_x\) e \(\mathbb R\). Si dimostra che l'insieme delle successione di numeri reali <a href="https://math.stackexchange.com/questions/413836/cardinality-of-all-real-sequences" target="_blank">ha la stessa cardinalità</a> dei numeri reali, quindi \(|(\mathscr F_x)^{\sigma}| = \mathfrak c.\)<br>
-  Da ciò si deduce che se \(|\mathscr F_x| = \mathfrak c \ \) ma allora anche <div class="formula">$$|\mathscr F_{x+1}| = |(\mathscr F_x)^{\sigma} \cup ((\mathscr F_x)^{\sigma})^c| = \mathfrak c.$$</div></p>
+  Da ciò si deduce che se \(|\mathscr F_x| = \mathfrak c \ \) allora anche <div class="formula">$$|\mathscr F_{x+1}| = |(\mathscr F_x)^{\sigma} \cup ((\mathscr F_x)^{\sigma})^c| = \mathfrak c.$$</div></p>
   <p>Infine se \(x\) è un ordinale limite e per ogni \(y < x\) vale che \(|\mathscr F_y| \le \mathfrak c\) allora \(\mathscr F_x = \bigcup_{y < x} \mathscr F_y\) è un'unione numerabile di insiemi con cardinalità \(\mathfrak c,\) e perciò ha anch'esso tale cardinalità.</p>
   </div>
     
