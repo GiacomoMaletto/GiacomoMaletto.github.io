@@ -429,7 +429,13 @@ Costruzione dell'insieme di Cantor
 <img src="passo2.jpeg" alt="Passo 2" class="responsive">
 
 <p>e così via per i restanti segmenti all'infinito. Per sapere quali segmenti è necessario togliere al passo \(k\) osserviamo che in generale ad ogni passo si tolgono sempre segmenti che sono simmetrici rispetto al centro e distano di \(\frac23\), quindi ci basta trovare una formula per i segmenti prima del centro di \([0,1]\) e per gli altri effettuare la traslazione. Osserviamo che i segmenti cercati sono semplicemente i segmenti ottenuti prima rimpiccioliti di \(\frac13\), quindi arriviamo alla formula
+<div class="formula">\begin{equation*}
+\left(a_k^i,b_k^i\right)=\left(\frac{a_{k-1}^i}3,\frac{b_{k-1}^i}3\right)\ i=1\dots 2^{k-2}
+\end{equation*}</div>
+(per \(k=1\) c'è solo un segmento) e per i restanti a destra del centro
 
+C_{4}=\left(\frac{1}{81}, \frac{2}{81}\right) \cup\left(\frac{7}{81}, \frac{8}{81}\right) \cup\left(\frac{19}{81}, \frac{20}{81}\right) \cup\left(\frac{25}{81}, \frac{26}{81}\right) \cup\left(\frac{55}{81}, \frac{56}{81}\right) \cup\left(\frac{61}{81}, \frac{62}{81}\right) \cup\left(\frac{73}{81}, \frac{74}{81}\right) \cup\left(\frac{79}{81}, \frac{80}{81}\right)
+\end{equation*}</div>
 Si vede che al passo \(C_n\) si tolgono \(2^{n-1}\) intervalli complessivamente di lunghezza \(\frac{2^{n-1}}{3^n}\).<br>
 Osserviamo che per ogni \(k\in \mathbb{N},\) \(C_k\) è l'unione di \(2^{k-1}\) intervalli chiusi ognuno di lunghezza \(3^{-k}.\)<br>
 L'insieme $$\mathcal{C} := [0,1] \setminus \bigcup_{i=1}^{+\infty}C_i$$ ottenuto rimuovendo i \(C_i\) è detto insieme di Cantor.</p>
